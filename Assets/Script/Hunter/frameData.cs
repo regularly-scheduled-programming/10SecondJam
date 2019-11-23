@@ -6,9 +6,9 @@ using UnityEngine;
 public class frameVars
 {
     public string Name;
-    public float startup;
-    public float action;
-    public float cooldown;
+    public int startup;
+    public int action;
+    public int cooldown;
 }
 
 [System.Serializable]

@@ -131,6 +131,8 @@ GameObject:
   m_Component:
   - component: {fileID: 194954192}
   - component: {fileID: 194954191}
+  - component: {fileID: 194954195}
+  - component: {fileID: 194954194}
   - component: {fileID: 194954193}
   m_Layer: 0
   m_Name: Player
@@ -197,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194954190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29, y: -1.71, z: -0.08096844}
+  m_LocalPosition: {x: -1.56, y: -1.49, z: -0.08096844}
   m_LocalScale: {x: 5.6025653, y: 5.6025653, z: 5.6025653}
   m_Children: []
   m_Father: {fileID: 0}
@@ -215,10 +217,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b5f6a06bd50464d95e03671dadc73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlaceHolder: {fileID: 2077276135}
+  PlaceHolder: {fileID: 1247231645}
   bulletSpawn: {fileID: 8365044269160269596, guid: 5939a87a069e6bc47a5e85db0b8cb3b9,
     type: 3}
   spawnOffset: 0.7
+  frames:
+    fastAction:
+      Name: 
+      startup: 0
+      action: 0
+      cooldown: 0
+    mediumAction:
+      Name: 
+      startup: 0
+      action: 0
+      cooldown: 0
+    slowAction:
+      Name: 
+      startup: 0
+      action: 0
+      cooldown: 0
+--- !u!114 &194954194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194954190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2bd07b01e72fc428d5394965aa4984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Movementpoints:
+  - {x: -5.36, y: 2.3}
+  - {x: -2.07, y: 3.44}
+  - {x: 1.36, y: 3.5}
+  lerplength: 1
+--- !u!114 &194954195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194954190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e435c9bf62b4cd43ac75fb2be2e033a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!1 &213051132
 GameObject:
   m_ObjectHideFlags: 0
