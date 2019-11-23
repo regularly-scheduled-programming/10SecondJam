@@ -55,6 +55,15 @@ public class TurnManager : MonoBehaviour
         {
             if (timeLine.CheckForActionDone(nextCheck))
             {
+                //timeLinesThatNeedActions.Add(timeLine); We have recovery time now
+                timeLine.CompleteAction();
+            }
+        }
+
+        foreach (TimeLine timeLine in timelines)
+        {
+            if (timeLine.CheckIfNewActionNeeded(nextCheck))
+            {
                 timeLinesThatNeedActions.Add(timeLine);
             }
         }
@@ -65,6 +74,8 @@ public class TurnManager : MonoBehaviour
             charToAct = timeLinesThatNeedActions[Random.Range(0, timeLinesThatNeedActions.Count)].GetOwner(); // No ionitiative roll, just pick randomly for now
             gameState = GameState.WaitingForSelection;
         }
+
+        nextCheck++; // Wait another in-game second for the next turn
     }
 
 
@@ -81,6 +92,7 @@ public class TurnManager : MonoBehaviour
         else
         {   // Everyone has orders, keep playing
             Time.timeScale = 0;
+            gameState = GameState.Playing;
         }
 
     }

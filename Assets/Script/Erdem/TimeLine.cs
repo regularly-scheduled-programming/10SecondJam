@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimeLine : MonoBehaviour
 {
     int nextActionEnd = 0;
+    int nextActionRecovery = 0;
     Action nextAction;
 
     Character myOwner;
@@ -27,12 +28,18 @@ public class TimeLine : MonoBehaviour
     public void AddAction(Action action)
     {
         nextActionEnd += action.GetTurnCost();
+        nextActionRecovery = nextActionEnd + action.GetRecoveryTurns();
         nextAction = action;
     }
 
     public bool CheckForActionDone(int currentTurn)
     {
         return currentTurn >= nextActionEnd;
+    }
+
+    public bool CheckIfNewActionNeeded(int currentTurn)
+    {
+        return currentTurn >= nextActionRecovery;
     }
 
     public void CompleteAction()

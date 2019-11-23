@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Move
   m_EditorClassIdentifier: 
   turnCost: {fileID: 11400000, guid: a8d4c6b8f65f1c944b5a9b362684ebd2, type: 2}
+  recoveryTurns: {fileID: 11400000, guid: 80e0bb6b16351fe40ac5af7ec85787b9, type: 2}
   eventCallback: {fileID: 11400000, guid: 4c911e02e8c498948b28ed550ae7358b, type: 2}

@@ -7,11 +7,17 @@ using ScriptableObjectArchitecture;
 public class Action : ScriptableObject
 {
     [SerializeField] IntVariable turnCost;
+    [SerializeField] IntVariable recoveryTurns;
     [SerializeField] public GameObjectGameEvent eventCallback;
 
     public int GetTurnCost()
     {
         return turnCost.Value;
+    }
+
+    public int GetRecoveryTurns()
+    {
+        return recoveryTurns.Value;
     }
 
 }
