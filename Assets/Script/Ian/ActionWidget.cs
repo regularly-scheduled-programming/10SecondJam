@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+public interface ITimelineAction
+{
+    void OnWarmUp();
+    void OnActive();
+    void OnCooldown();
+    frameVars GetFrames();
+    
+}
 public class ActionWidget : MonoBehaviour
 {
     public RectTransform[] Segments;
@@ -11,9 +19,8 @@ public class ActionWidget : MonoBehaviour
     public int ActiveFrames = 1;
     public int CooldownFrames = 1;
 
-    public UnityEvent OnWarmUp;
-    public UnityEvent OnActive;
-    public UnityEvent OnCooldown;
+    public ITimelineAction myAction;
+    
 
     [HideInInspector]
     public int framemultiplier = 30;
