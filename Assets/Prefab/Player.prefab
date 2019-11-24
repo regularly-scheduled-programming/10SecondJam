@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3789657293921004301}
   - component: {fileID: 3789657293921004302}
   - component: {fileID: 3789657293921004303}
+  - component: {fileID: -3396092008795375550}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -100,4 +101,22 @@ MonoBehaviour:
   topRight: {x: 0, y: 0, z: 0}
   bottomLeft: {x: 0, y: 0, z: 0}
   bottomRight: {x: 0, y: 0, z: 0}
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   obstacles: []
+  rays: []
+  polygon: {fileID: 0}
+--- !u!114 &-3396092008795375550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789657293921004296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928ff3c7b3cc75d49bfe8f4e84c6bbe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: {fileID: 11400000, guid: aa6c35fa5db369d4b90e9da4ed8b5817, type: 2}

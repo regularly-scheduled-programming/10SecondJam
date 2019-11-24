@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeLine : MonoBehaviour
+public class TimeLine
 {
     int nextActionEnd = 0;
     int nextActionRecovery = 0;
@@ -44,6 +44,9 @@ public class TimeLine : MonoBehaviour
 
     public void CompleteAction()
     {
-        nextAction.eventCallback.Raise(myOwner.gameObject);
+        if(nextAction != null && nextAction.eventCallback != null)
+        {
+            nextAction.eventCallback.Raise(myOwner.gameObject);
+        }
     }
 }
