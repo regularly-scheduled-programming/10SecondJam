@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TimelineBehavior : MonoBehaviour
 {
+    [SerializeField] GameObject ActionWidgetPrefab;
     public float scrollSpeed = 1;
     public float currentXPosition = 0;
     public float minXPostion;
@@ -33,7 +34,7 @@ public class TimelineBehavior : MonoBehaviour
             minXPostion -= action.CooldownFrames * action.framemultiplier;
         }
 
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
 
     }
     void FixContentSizeFitter()
@@ -53,7 +54,17 @@ public class TimelineBehavior : MonoBehaviour
         else
         {
             currentXPosition = minXPostion;
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         }
+    }
+
+    public void AddAction(Action action)
+    {
+        GameObject o = Instantiate(ActionWidgetPrefab, this.transform.GetChild(0));    // Hardcoded. Sorry.
+        o.GetComponent<ActionWidget>().WarmUpFrames = action.GetTurnCost();
+        o.GetComponent<ActionWidget>().ActiveFrames = 0;    // incompatibility between behaviours. Handle later?
+        o.GetComponent<ActionWidget>().CooldownFrames = action.GetRecoveryTurns();
+
+        UpdateActionList();
     }
 }
