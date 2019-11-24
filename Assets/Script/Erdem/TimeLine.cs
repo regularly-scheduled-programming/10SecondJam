@@ -49,4 +49,9 @@ public class TimeLine
             nextAction.eventCallback.Raise(myOwner.gameObject);
         }
     }
+
+    public Action GetCurrentAction()
+    {
+         return nextAction;
+    }
 }
