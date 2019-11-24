@@ -77,6 +77,7 @@ public class TurnManager : MonoBehaviour
             Time.timeScale = 0;
             charToAct = timeLinesThatNeedActions[Random.Range(0, timeLinesThatNeedActions.Count)].GetOwner(); // No ionitiative roll, just pick randomly for now
             gameState = GameState.WaitingForSelection;
+            Debug.Log(charToAct.gameObject + "needs an order");
         }
 
         nextCheck++; // Wait another in-game second for the next turn
