@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class TestAction : MonoBehaviour, ITimelineAction
 {
     public TimelineBehavior myTimeLine;
-
+   
     Vector3 originalScale;
     [Header("DIFFERENT ACTION TYPES")]
     [SerializeField]

@@ -9,7 +9,12 @@ public class TimelineBehavior : MonoBehaviour
     public float scrollSpeed = 1;
     public float currentXPosition = 0;
     public float minXPostion;
+    public float nextActionWarmUp;
+    public float nextActionActivate;
+    public float nextActiobCoolDown;
+
     public ActionWidget[] MyActions;
+    private int currentActionIndex = 0;
     private RectTransform rectTransform;
     private ContentSizeFitter contentSizeFitter;
     // Start is called before the first frame update
@@ -33,7 +38,9 @@ public class TimelineBehavior : MonoBehaviour
             minXPostion -= action.ActiveFrames * action.framemultiplier;
             minXPostion -= action.CooldownFrames * action.framemultiplier;
         }
+        currentActionIndex = MyActions.Length - 1;
 
+       // nextEventXPositon = 
         Time.timeScale = 1;
 
     }
@@ -47,7 +54,30 @@ public class TimelineBehavior : MonoBehaviour
 
         if(currentXPosition > minXPostion)
         {
+            if(currentXPosition < nextActionWarmUp)
+            {
+                MyActions[currentActionIndex].myAction.OnWarmUp();
+                Debug.Log("OnWarmUp");
+                nextActionWarmUp = -Mathf.Infinity;
+            }
+
+            if ( currentXPosition < nextActionActivate)
+            {
+                MyActions[currentActionIndex].myAction.OnActive();
+                Debug.Log("OnActive");
+
+                nextActionActivate = -Mathf.Infinity;
+            }
             currentXPosition -= scrollSpeed * Time.deltaTime;
+
+            if (currentXPosition < nextActiobCoolDown)
+            {
+                MyActions[currentActionIndex].myAction.OnCooldown();
+                Debug.Log("OnCooldown");
+
+                nextActiobCoolDown = -Mathf.Infinity;
+            }
+
             rectTransform.anchoredPosition3D = new Vector3(currentXPosition, rectTransform.anchoredPosition3D.y);
 
         }
@@ -60,15 +90,25 @@ public class TimelineBehavior : MonoBehaviour
     public void AddToTimeline(ITimelineAction test, ActionType type)
     {
 
-        AddAction(test.GetFrames(type));
-    }
-    public void AddAction(frameVars data)
-    {
-        GameObject o = Instantiate(ActionWidgetPrefab, this.transform.GetChild(0));    // Hardcoded. Sorry.
-        o.GetComponent<ActionWidget>().WarmUpFrames = data.startup;
-        o.GetComponent<ActionWidget>().ActiveFrames = data.action;    // incompatibility between behaviours. Handle later?
-        o.GetComponent<ActionWidget>().CooldownFrames = data.cooldown;
 
-        UpdateActionList();
+        if (currentXPosition == minXPostion)
+        {
+            var data = test.GetFrames(type);
+            GameObject o = Instantiate(ActionWidgetPrefab, this.transform.GetChild(0));
+            var widget = o.GetComponent<ActionWidget>();
+
+            widget.WarmUpFrames = data.startup;
+            widget.ActiveFrames = data.action;
+            widget.CooldownFrames = data.cooldown;
+
+            widget.myAction = test;
+
+            nextActionWarmUp = minXPostion - widget.WarmUpFrames * widget.framemultiplier;
+            nextActionActivate = nextActionWarmUp - widget.ActiveFrames * widget.framemultiplier;
+            nextActiobCoolDown = nextActionActivate - widget.CooldownFrames * widget.framemultiplier;
+
+            UpdateActionList();
+        }
     }
+   
 }
