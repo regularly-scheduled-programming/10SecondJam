@@ -121,7 +121,7 @@ public class LineofSight : MonoBehaviour
 
         }
      
-        DrawPolygon2D(vertices.ToArray(), triangles.ToArray(), Color.yellow);
+        DrawPolygon2D(vertices.ToArray(), triangles.ToArray(), new Color(1f,0.92f,0.016f,0.5f));
 
     }
     public void sortRays()

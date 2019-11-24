@@ -7,7 +7,7 @@ public class MovementAciton : MonoBehaviour
    
 {
     [SerializeField]
-    public List<Vector2> Movementpoints = new List<Vector2>();
+    public List<GameObject> Movementpoints = new List<GameObject>();
     int currentPoint=-1;
     bool move=false;
 
@@ -30,7 +30,7 @@ public class MovementAciton : MonoBehaviour
         {
             currentLerpTime += Time.deltaTime;
             float perc = currentLerpTime / lerplength;
-            transform.position = Vector3.Lerp(currentPos, Movementpoints[currentPoint], perc);
+            transform.position = Vector3.Lerp(currentPos, new vector2(Movementpoints[currentPoint].getcomponent<Tile>(). XCoord,Movementpoints[currentPoint].getcomponent<Tile>().YCoord), perc);
 
             if (perc >= 1)
             {
