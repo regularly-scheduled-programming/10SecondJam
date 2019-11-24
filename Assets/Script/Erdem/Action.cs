@@ -10,6 +10,7 @@ public class Action : ScriptableObject
     [SerializeField] IntVariable recoveryTurns;
     [SerializeField] public GameObjectGameEvent eventCallback;
 
+
     public int GetTurnCost()
     {
         return turnCost.Value;
