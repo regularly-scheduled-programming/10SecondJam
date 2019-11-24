@@ -87,6 +87,7 @@ public class TurnManager : MonoBehaviour
     {
         charToAct.GetTimeLine().AddAction(action);
         timeLinesThatNeedActions.Remove(charToAct.GetTimeLine());
+        Debug.Log(charToAct.gameObject + " recieved an order!");
 
         if(timeLinesThatNeedActions.Count > 0)
         {
@@ -97,9 +98,8 @@ public class TurnManager : MonoBehaviour
         }
         else
         {   // Everyone has orders, keep playing
-            Time.timeScale = 0;
+            Time.timeScale = 1;
             gameState = GameState.Playing;
-
         }
 
     }

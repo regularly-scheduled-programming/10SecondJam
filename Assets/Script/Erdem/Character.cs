@@ -34,4 +34,9 @@ public class Character : MonoBehaviour
         }
     }
 
+    public Action GetCurrentActionInfo()
+    {
+        return myTimeLine.GetCurrentAction();
+    }
+
 }
