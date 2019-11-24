@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ed1b6a55075454f93c604c31ea17e9, type: 3}
+  m_Name: Dodge
+  m_EditorClassIdentifier: 
+  turnCost: {fileID: 11400000, guid: ca89cf1bf2486cd438a1ae0705b5d029, type: 2}
+  recoveryTurns: {fileID: 11400000, guid: be218b8e48fa66f47a3f7765fbf420d5, type: 2}
+  eventCallback: {fileID: 11400000, guid: 869c8daa70b4cf74cabe73ea4bed120b, type: 2}
