@@ -9,8 +9,8 @@ public interface ITimelineAction
     void OnWarmUp();
     void OnActive();
     void OnCooldown();
-    frameVars GetFrames();
-    
+    frameVars GetFrames(ActionType type);
+    void AddAction();
 }
 public class ActionWidget : MonoBehaviour
 {

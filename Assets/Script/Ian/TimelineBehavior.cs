@@ -57,7 +57,10 @@ public class TimelineBehavior : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+    public void AddToTimeline(ITimelineAction test)
+    {
 
+    }
     public void AddAction(frameVars data)
     {
         GameObject o = Instantiate(ActionWidgetPrefab, this.transform.GetChild(0));    // Hardcoded. Sorry.
