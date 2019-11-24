@@ -5,6 +5,15 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
 
+    public enum GridStates{
+        Default,
+        ShowMove,
+        ShowShoot,
+        ShowDodge
+    }
+
+    public GridStates GridState;
+
     public GameObject player1;
     public Tile TileScript;
     public int player1Xcoord;
@@ -124,6 +133,22 @@ public class GridManager : MonoBehaviour
                     }
             }
             
+        }
+    }
+
+    public void ChangeGridState(int i)
+    {
+        switch((GridStates)i)
+        {
+            case GridStates.Default:
+            break;
+            case GridStates.ShowMove:
+            ShowAvailableMovement();
+            break;
+            case GridStates.ShowShoot:
+            break;
+            case GridStates.ShowDodge:
+            break;
         }
     }
 
