@@ -11,11 +11,24 @@ public class Obstacle : MonoBehaviour
     public Vector3 bottomRight;
 
     BoxCollider2D box;
+    public Vector2 size;
     // Start is called before the first frame update
     void Awake()
     {
         box = GetComponent<BoxCollider2D>();
         GetBoxCorners();
+    }
+    private void OnDrawGizmos()
+    {
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireCube(transform.position, new Vector3(size.x, size.y, 1)*2);
+
+        //Gizmos.DrawLine(this.transform.position, topRight);
+        //Gizmos.DrawLine(this.transform.position, topLeft);
+        //Gizmos.DrawLine(this.transform.position, bottomRight);
+        //Gizmos.DrawLine(this.transform.position, bottomLeft);
+
     }
     void GetBoxCorners()
     {
@@ -26,8 +39,8 @@ public class Obstacle : MonoBehaviour
         Vector3 worldPosition = bcTransform.TransformPoint(0, 0, 0);
 
         // The collider's local width and height, accounting for scale, divided by 2
-        Vector2 size = new Vector2(box.size.x * bcTransform.localScale.x * 0.5f, box.size.y * bcTransform.localScale.y * 0.5f);
-
+        size = new Vector2(box.size.x * bcTransform.localScale.x * 0.5f, box.size.y * bcTransform.localScale.y * 0.5f);
+        size *= 1.1f;
         // STEP 1: FIND LOCAL, UN-ROTATED CORNERS
         // Find the 4 corners of the BoxCollider2D in LOCAL space, if the BoxCollider2D had never been rotated
         Vector3 corner1 = new Vector2(-size.x, -size.y);
