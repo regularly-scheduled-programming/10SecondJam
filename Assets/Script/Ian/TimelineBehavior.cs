@@ -34,7 +34,7 @@ public class TimelineBehavior : MonoBehaviour
             minXPostion -= action.CooldownFrames * action.framemultiplier;
         }
 
-        //Time.timeScale = 1;
+        Time.timeScale = 1;
 
     }
     void FixContentSizeFitter()
@@ -54,16 +54,16 @@ public class TimelineBehavior : MonoBehaviour
         else
         {
             currentXPosition = minXPostion;
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
         }
     }
 
-    public void AddAction(Action action)
+    public void AddAction(frameVars data)
     {
         GameObject o = Instantiate(ActionWidgetPrefab, this.transform.GetChild(0));    // Hardcoded. Sorry.
-        o.GetComponent<ActionWidget>().WarmUpFrames = action.GetTurnCost();
-        o.GetComponent<ActionWidget>().ActiveFrames = 0;    // incompatibility between behaviours. Handle later?
-        o.GetComponent<ActionWidget>().CooldownFrames = action.GetRecoveryTurns();
+        o.GetComponent<ActionWidget>().WarmUpFrames = data.startup;
+        o.GetComponent<ActionWidget>().ActiveFrames = data.action;    // incompatibility between behaviours. Handle later?
+        o.GetComponent<ActionWidget>().CooldownFrames = data.cooldown;
 
         UpdateActionList();
     }
