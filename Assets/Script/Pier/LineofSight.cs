@@ -6,7 +6,7 @@ public class LineofSight : MonoBehaviour
 {
     public float x = 5;
     public float y = 5;
-
+    public Vector3 center;
     public Vector3 topLeft;
     public Vector3 topRight;
     public Vector3 bottomLeft;
@@ -36,11 +36,10 @@ public class LineofSight : MonoBehaviour
     {
         obstacles = FindObjectsOfType<Obstacle>();
 
-        topRight = new Vector3(x / 2, y / 2, 1);
-        topLeft = new Vector3(-x / 2, y / 2, 1);
-        bottomRight = new Vector3(x / 2, -y / 2, 1);
-        bottomLeft = new Vector3(-x / 2, -y / 2, 1);
-        bounds = new Bounds(Vector3.zero, new Vector3(x, y, 1));
+        topRight = new Vector3(x / 2, y / 2, 1) + center;
+        topLeft = new Vector3(-x / 2, y / 2, 1) + center;
+        bottomRight = new Vector3(x / 2, -y / 2, 1) + center;
+        bottomLeft = new Vector3(-x / 2, -y / 2, 1) + center;
         rays = new List<RayData>();
 
     }
@@ -144,10 +143,11 @@ public class LineofSight : MonoBehaviour
         }
 
     }
+    public LayerMask obstacleLayer;
     private void CheckCorner(Vector3 corner)
     {
         Ray2D ray = new Ray2D(transform.position, (corner - transform.position).normalized);
-        RaycastHit2D hit =  Physics2D.Raycast(ray.origin,ray.direction,100);
+        RaycastHit2D hit =  Physics2D.Raycast(ray.origin,ray.direction,100, obstacleLayer);
 
         if (hit)
         {
@@ -169,7 +169,7 @@ public class LineofSight : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(Vector3.zero, new Vector3(x, y, 1));
+        Gizmos.DrawWireCube(center, new Vector3(x, y, 1));
 
     }
 
