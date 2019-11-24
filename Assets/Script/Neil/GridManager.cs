@@ -18,6 +18,10 @@ public class GridManager : MonoBehaviour
 
     private static int rows = 8;
 	private static int coloumns = 16;
+
+    public GameObject[] tempneighbors;
+
+    public List<GameObject> movementPath;
     
     // Start is called before the first frame update
     void Start()
@@ -101,10 +105,13 @@ public class GridManager : MonoBehaviour
     {
         for(int i = 0; i < Grid.Length; i++)
         {
+            //Grid[i].GetComponent<SpriteRenderer>().color = Color.grey;
             if(Grid[i].GetComponent<Tile>().XCoord == x 
             && Grid[i].GetComponent<Tile>().YCoord == y)
             {
+               
                 Grid[i].GetComponent<Tile>().TileType =  Tile.TileTypes.PlayerOccupied;
+
                 Grid[i].GetComponent<SpriteRenderer>().color = Color.red;
             }
                 else{
@@ -114,6 +121,7 @@ public class GridManager : MonoBehaviour
                         
                     }
             }
+            
         }
     }
 
@@ -124,22 +132,21 @@ public class GridManager : MonoBehaviour
             ShowWalkable = true;
             for(int i = 0; i < Grid.Length; i++)
             {
-                //middle check
-            //    if(Grid[i].GetComponent<Tile>().XCoord >0 && Grid[i].GetComponent<Tile>().XCoord < 15 &&
-            //     Grid[i].GetComponent<Tile>().YCoord >0 && Grid[i].GetComponent<Tile>().YCoord < 7)
-            //     {
-                    if(Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
-                    {
-                        Grid[i].GetComponent<SpriteRenderer>().color = Color.green;
-                    }
-                    else
-                    {
-                        if(Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Cover)
+                if(Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.PlayerOccupied)
+                {
+                  
+                  tempneighbors = Grid[i].GetComponent<Tile>().neighbors;
+                  for(int j = 0; j < tempneighbors.Length; j++)
+                  {
+                        if(Grid[i].GetComponent<Tile>().neighbors[j].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
                         {
-                            Grid[i].GetComponent<SpriteRenderer>().color = Color.red;
+                            Grid[i].GetComponent<Tile>().neighbors[j].GetComponent<SpriteRenderer>().color = Color.green;
+
                         }
-                    }
-             //    }
+                  }
+                   
+                }
+            
             }
         }
         else
@@ -147,7 +154,7 @@ public class GridManager : MonoBehaviour
             ShowWalkable = false;
             for(int i = 0; i < Grid.Length; i++)
             {
-                if(Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
+                 if(Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
                 {
                     Grid[i].GetComponent<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f);
                 }
@@ -157,7 +164,7 @@ public class GridManager : MonoBehaviour
                     {
                         Grid[i].GetComponent<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f);
                     }
-                }
+                } 
             }
         }
     }
@@ -171,6 +178,7 @@ public class GridManager : MonoBehaviour
                     Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
                 {                                 
                     Grid[i].GetComponent<SpriteRenderer>().color = Color.blue;
+                    movementPath.Add(Grid[i]);
                 }
             }
     }

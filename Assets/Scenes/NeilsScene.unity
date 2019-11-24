@@ -335,7 +335,7 @@ Transform:
   - {fileID: 1475023704}
   - {fileID: 477501676}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &16518606
 MonoBehaviour:
@@ -653,6 +653,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1 &86727212 stripped
@@ -1228,7 +1233,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -1474,6 +1479,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1 &224272819 stripped
@@ -1952,6 +1962,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1001 &314848217
@@ -2553,6 +2568,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1001 &441440063
@@ -2636,16 +2656,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 966863340}
     m_Modifications:
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacle (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268905, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2700,6 +2710,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268904, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
@@ -2977,7 +2997,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -3092,7 +3112,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -3247,16 +3267,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 966863340}
     m_Modifications:
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacle (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268905, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3316,6 +3326,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1.060611
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacle (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268904, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
@@ -3416,7 +3436,7 @@ RectTransform:
   m_Children:
   - {fileID: 1252713044}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3843,7 +3863,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &661053467
 PrefabInstance:
@@ -3917,6 +3937,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1 &675259312 stripped
@@ -4412,6 +4437,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1 &742073150 stripped
@@ -4618,7 +4648,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -5059,7 +5089,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -5485,7 +5515,7 @@ Transform:
   - {fileID: 1536551444}
   - {fileID: 498846993}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &976252788 stripped
 GameObject:
@@ -5814,16 +5844,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 966863340}
     m_Modifications:
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacle (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268905, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5883,6 +5903,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1.060611
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacle (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268904, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
@@ -6047,7 +6077,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -6286,6 +6316,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1 &1068882440 stripped
@@ -6370,7 +6405,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -6717,7 +6752,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -6872,6 +6907,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1 &1130976808 stripped
@@ -6918,7 +6958,7 @@ Transform:
   - {fileID: 1214352635}
   - {fileID: 1986787742}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1137460066 stripped
 GameObject:
@@ -7095,6 +7135,10 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 180484874, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1001 &1166443085
@@ -7504,7 +7548,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -8319,6 +8363,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1 &1357560634 stripped
@@ -8388,7 +8437,7 @@ PrefabInstance:
     - target: {fileID: 3789657293921004301, guid: 0e592338eb7f82543aca63b3d0be00ad,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3789657293921004301, guid: 0e592338eb7f82543aca63b3d0be00ad,
         type: 3}
@@ -8434,6 +8483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: center.y
       value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789657293921004303, guid: 0e592338eb7f82543aca63b3d0be00ad,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e592338eb7f82543aca63b3d0be00ad, type: 3}
@@ -8533,6 +8587,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1001 &1398558417
@@ -8894,16 +8953,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 966863340}
     m_Modifications:
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268905, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8958,6 +9007,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268904, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
@@ -9489,6 +9548,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1001 &1559819751
@@ -9563,6 +9627,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1001 &1566005464
@@ -9783,7 +9852,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -10213,6 +10282,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1 &1641590557 stripped
@@ -10465,16 +10539,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 966863340}
     m_Modifications:
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacle (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268905, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10529,6 +10593,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacle (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268904, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
@@ -10669,6 +10743,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1001 &1748233416
@@ -11048,7 +11127,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -11129,6 +11208,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!1 &1803666931 stripped
@@ -11174,16 +11258,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 966863340}
     m_Modifications:
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacle (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268905, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11243,6 +11317,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1.060611
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacle (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268904, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
@@ -11574,7 +11658,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -11732,7 +11816,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -11892,6 +11976,11 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
 --- !u!4 &1919877003 stripped
@@ -12130,7 +12219,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -13312,7 +13401,7 @@ PrefabInstance:
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
       propertyPath: TileType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
         type: 3}
@@ -13352,16 +13441,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 966863340}
     m_Modifications:
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacle (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268905, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13421,6 +13500,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 3.053
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacle (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669185173793268949, guid: 9d3491de4fabe1e439c0dc76b78d8679,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1669185173793268904, guid: 9d3491de4fabe1e439c0dc76b78d8679,
         type: 3}
@@ -13501,5 +13590,14 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 16518606}
+    - target: {fileID: 5626660967573631153, guid: 7129c978b34653841a4e11b18960cc58,
+        type: 3}
+      propertyPath: TileType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 180484874, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7129c978b34653841a4e11b18960cc58, type: 3}
