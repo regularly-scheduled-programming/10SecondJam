@@ -5,7 +5,7 @@ using UnityEngine;
 public class bulletTargeting : MonoBehaviour
 {
     //Vector2 ShootingLocation;
-    public GameObject PlaceHolder;
+    //public GameObject PlaceHolder;
     [SerializeField]
     GameObject bulletSpawn;
     [SerializeField]
@@ -14,7 +14,10 @@ public class bulletTargeting : MonoBehaviour
     [Header("DIFFERENT ACTION TYPES")]
     [SerializeField]
     frameData frames;
+
+    public Vector3 ShootingLocation;
  
+
 
 
 
@@ -22,7 +25,7 @@ public class bulletTargeting : MonoBehaviour
     void Start()
     {
         //Debug
-        SpawnBullet(PlaceHolder.transform.position);
+        //SpawnBullet(PlaceHolder.transform.position);
 
         
     }
@@ -48,4 +51,10 @@ public class bulletTargeting : MonoBehaviour
     }
  
     
+    public void getShootLocation(){
+       ShootingLocation=new Vector3(FindObjectOfType<GridManager>().toShoot.x,FindObjectOfType<GridManager>().toShoot.y,0);
+       SpawnBullet(ShootingLocation);
+    }
+    
+
 }

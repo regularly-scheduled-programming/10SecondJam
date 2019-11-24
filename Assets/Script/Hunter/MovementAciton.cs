@@ -20,7 +20,7 @@ public class MovementAciton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NextMovement();
+        //NextMovement();
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class MovementAciton : MonoBehaviour
         {
             currentLerpTime += Time.deltaTime;
             float perc = currentLerpTime / lerplength;
-            transform.position = Vector3.Lerp(currentPos, new vector2(Movementpoints[currentPoint].getcomponent<Tile>(). XCoord,Movementpoints[currentPoint].getcomponent<Tile>().YCoord), perc);
+            transform.position = Vector3.Lerp(currentPos, new Vector2(Movementpoints[currentPoint].GetComponent<Tile>(). XCoord,Movementpoints[currentPoint].GetComponent<Tile>().YCoord), perc);
 
             if (perc >= 1)
             {
@@ -52,6 +52,7 @@ public class MovementAciton : MonoBehaviour
         {
             move = false;
             currentPoint = -1;
+            clearpaths();
         }
 
         else
@@ -62,7 +63,15 @@ public class MovementAciton : MonoBehaviour
         }
     }
 
-    
+    public void SetMovementList(){
+       Movementpoints=FindObjectOfType<GridManager>().movementPath;
+       NextMovement();
+
+    }
    
+   public void clearpaths(){
+        Movementpoints.Clear();
+        FindObjectOfType<GridManager>().movementPath.Clear();
+   } 
 
 }

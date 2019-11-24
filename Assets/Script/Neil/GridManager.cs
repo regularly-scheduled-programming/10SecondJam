@@ -22,6 +22,8 @@ public class GridManager : MonoBehaviour
     public GameObject[] tempneighbors;
 
     public List<GameObject> movementPath;
+
+    public Vector2 toShoot;
     
     // Start is called before the first frame update
     void Start()
@@ -171,6 +173,39 @@ public class GridManager : MonoBehaviour
 
     public void SelectMovementPath(int x, int y)
     {
+        var state=player1.GetComponent<playerCharacter>().currentAction;
+        switch (state){
+
+            case playerCharacter.actionState.Move:
+              for(int i = 0; i < Grid.Length; i++)
+            {
+                if(Grid[i].GetComponent<Tile>().XCoord == x 
+                    && Grid[i].GetComponent<Tile>().YCoord == y && 
+                    Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
+                {                                 
+                    Grid[i].GetComponent<SpriteRenderer>().color = Color.blue;
+                    movementPath.Add(Grid[i]);
+                }
+            }
+            break;
+            case playerCharacter.actionState.Shoot:
+                 for(int i = 0; i < Grid.Length; i++)
+            {
+                if(Grid[i].GetComponent<Tile>().XCoord == x 
+                    && Grid[i].GetComponent<Tile>().YCoord == y && 
+                    Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
+                {                                 
+
+                 toShoot= new Vector2(Grid[i].GetComponent<Tile>().XCoord,Grid[i].GetComponent<Tile>().YCoord);
+                }
+            }    
+            break;
+            case playerCharacter.actionState.Dodge:
+
+            break;
+        }
+
+        
          for(int i = 0; i < Grid.Length; i++)
             {
                 if(Grid[i].GetComponent<Tile>().XCoord == x 

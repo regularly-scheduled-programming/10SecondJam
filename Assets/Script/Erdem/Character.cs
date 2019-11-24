@@ -38,5 +38,4 @@ public class Character : MonoBehaviour
     {
         return myTimeLine.GetCurrentAction();
     }
-
 }
