@@ -9,10 +9,11 @@ public class MovementAciton : MonoBehaviour
     [SerializeField]
     public List<GameObject> Movementpoints = new List<GameObject>();
     int currentPoint=-1;
-    bool move=false;
+    public bool move=false;
 
     public float lerplength=1;
     float currentLerpTime;
+    float timeStarted;
 
     Vector2 endposition;
     Vector2 currentPos;
@@ -28,13 +29,14 @@ public class MovementAciton : MonoBehaviour
     {
         if (move)
         {
-            currentLerpTime += Time.deltaTime;
+            currentLerpTime += Time.time-timeStarted;
+            //currentLerpTime += Time.deltaTime;
             float perc = currentLerpTime / lerplength;
             transform.position = Vector3.Lerp(currentPos, new Vector2(Movementpoints[currentPoint].GetComponent<Tile>(). XCoord,Movementpoints[currentPoint].GetComponent<Tile>().YCoord), perc);
 
             if (perc >= 1)
             {
-                move = false;
+                //move = false;
                 currentLerpTime = 0;
                 NextMovement();
             }
@@ -57,6 +59,7 @@ public class MovementAciton : MonoBehaviour
 
         else
         {
+            timeStarted = Time.time;
             move = true;
             //Tell something the movements over
             
