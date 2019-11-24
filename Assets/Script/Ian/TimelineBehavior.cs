@@ -57,9 +57,10 @@ public class TimelineBehavior : MonoBehaviour
             Time.timeScale = 0;
         }
     }
-    public void AddToTimeline(ITimelineAction test)
+    public void AddToTimeline(ITimelineAction test, ActionType type)
     {
 
+        AddAction(test.GetFrames(type));
     }
     public void AddAction(frameVars data)
     {
