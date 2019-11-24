@@ -5,7 +5,7 @@ using ScriptableObjectArchitecture;
 
 public class Character : MonoBehaviour
 {
-    IntVariable maxHealth;
+    [SerializeField] IntVariable maxHealth;
     int currentHealth;
     TimeLine myTimeLine;
 

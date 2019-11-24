@@ -6,7 +6,7 @@ public class TurnManager : MonoBehaviour
 {
     float timeSinceStart = 0f;
     int nextCheck = 0;
-    [SerializeField] List<Character> characters = new List<Character>();
+    [SerializeField] List<Character> characters;
     List<TimeLine> timelines = new List<TimeLine>();
 
     Character charToAct;
@@ -29,6 +29,10 @@ public class TurnManager : MonoBehaviour
             timelines.Add(t);
             character.AssignTimeLine(t);
         }
+
+        Debug.Log(timelines.Count + " many timelines created");
+
+        CheckForCompletedActions();
     }
 
     // Update is called once per frame
@@ -87,12 +91,15 @@ public class TurnManager : MonoBehaviour
         if(timeLinesThatNeedActions.Count > 0)
         {
             charToAct = timeLinesThatNeedActions[Random.Range(0, timeLinesThatNeedActions.Count)].GetOwner(); // No ionitiative roll, just pick randomly for now
+
+            Debug.Log(charToAct.gameObject + " needs an order!");
             //Wait for command for the new guy
         }
         else
         {   // Everyone has orders, keep playing
             Time.timeScale = 0;
             gameState = GameState.Playing;
+
         }
 
     }
