@@ -9,6 +9,7 @@ public class frameVars
     public int startup;
     public int action;
     public int cooldown;
+    public int damage;
 }
 
 [System.Serializable]
