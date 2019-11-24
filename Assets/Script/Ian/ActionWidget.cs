@@ -1,14 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
+public interface ITimelineAction
+{
+    void OnWarmUp();
+    void OnActive();
+    void OnCooldown();
+    frameVars GetFrames(ActionType type);
+    void AddAction();
+}
 public class ActionWidget : MonoBehaviour
 {
     public RectTransform[] Segments;
     public int WarmUpFrames = 1;
     public int ActiveFrames = 1;
     public int CooldownFrames = 1;
+
+    public ITimelineAction myAction;
+    
+
     [HideInInspector]
     public int framemultiplier = 30;
     // Start is called before the first frame update
@@ -23,9 +36,5 @@ public class ActionWidget : MonoBehaviour
         Segments[1].sizeDelta = new Vector2(ActiveFrames * framemultiplier, rect.height);
         Segments[2].sizeDelta = new Vector2(CooldownFrames * framemultiplier, rect.height);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

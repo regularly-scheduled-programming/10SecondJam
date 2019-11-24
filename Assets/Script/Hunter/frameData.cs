@@ -18,4 +18,7 @@ public class frameData
    public frameVars mediumAction;
    public frameVars slowAction;
 }
-
+public enum ActionType
+{
+    fastAction, mediumAction,slowAction
+}
