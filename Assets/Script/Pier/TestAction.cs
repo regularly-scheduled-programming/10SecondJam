@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class TestAction : MonoBehaviour, ITimelineAction
 {
+    public TimelineBehavior myTimeLine;
+   
     Vector3 originalScale;
     [Header("DIFFERENT ACTION TYPES")]
     [SerializeField]
@@ -15,12 +17,7 @@ public class TestAction : MonoBehaviour, ITimelineAction
     public UnityEvent OnCooldownEvent;
 
 
-    public TimelineBehavior myTimeLine;
-    public void AddAction()
-    {
-       
-    }
-
+  
     public frameVars GetFrames(ActionType type)
     {
         switch (type)
@@ -71,5 +68,19 @@ public class TestAction : MonoBehaviour, ITimelineAction
     {
         
     }
-    
+
+    public void AddFastAction()
+    {
+        myTimeLine.AddToTimeline(this, ActionType.fastAction);
+    }
+
+    public void AddMediumAction()
+    {
+        myTimeLine.AddToTimeline(this, ActionType.mediumAction);
+    }
+
+    public void AddSlowAction()
+    {
+        myTimeLine.AddToTimeline(this, ActionType.slowAction);
+    }
 }
