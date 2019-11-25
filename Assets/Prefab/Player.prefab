@@ -11,10 +11,14 @@ GameObject:
   - component: {fileID: 3789657293921004301}
   - component: {fileID: 3789657293921004302}
   - component: {fileID: 3789657293921004303}
+  - component: {fileID: 822189452497978291}
   - component: {fileID: -3396092008795375550}
+  - component: {fileID: 901859909}
+  - component: {fileID: 901859910}
+  - component: {fileID: 901859911}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 16
   y: 8
+  center: {x: 7.5, y: 3.5, z: 0}
   topLeft: {x: 0, y: 0, z: 0}
   topRight: {x: 0, y: 0, z: 0}
   bottomLeft: {x: 0, y: 0, z: 0}
@@ -107,6 +112,73 @@ MonoBehaviour:
   obstacles: []
   rays: []
   polygon: {fileID: 0}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &822189452497978291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789657293921004296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11aec88e3e3f50747b4830a9046a11d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTimeLine: {fileID: 0}
+  frames:
+    fastAction:
+      Name: matrix
+      startup: 2
+      action: 2
+      cooldown: 2
+      damage: 0
+    mediumAction:
+      Name: Side Flip
+      startup: 2
+      action: 4
+      cooldown: 4
+      damage: 0
+    slowAction:
+      Name: 
+      startup: 2
+      action: 6
+      cooldown: 5
+      damage: 0
+  OnWarmUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActiveEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 822189452497978291}
+        m_MethodName: setInvunerable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnCooldownEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 822189452497978291}
+        m_MethodName: setInvunerable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PC: {fileID: 0}
 --- !u!114 &-3396092008795375550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,3 +192,119 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: {fileID: 11400000, guid: aa6c35fa5db369d4b90e9da4ed8b5817, type: 2}
+--- !u!114 &901859909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789657293921004296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2bd07b01e72fc428d5394965aa4984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Movementpoints: []
+  move: 0
+  lerplength: 0.2
+  myTimeLine: {fileID: 0}
+  frames:
+    fastAction:
+      Name: 
+      startup: 0
+      action: 0
+      cooldown: 0
+      damage: 0
+    mediumAction:
+      Name: 
+      startup: 0
+      action: 0
+      cooldown: 0
+      damage: 0
+    slowAction:
+      Name: 
+      startup: 0
+      action: 0
+      cooldown: 0
+      damage: 0
+  OnWarmUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActiveEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCooldownEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &901859910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789657293921004296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e435c9bf62b4cd43ac75fb2be2e033a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  maxHealth: 10
+  invunerable: 0
+  currentAction: 1
+--- !u!114 &901859911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789657293921004296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b5f6a06bd50464d95e03671dadc73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpawn: {fileID: 8365044269160269596, guid: 5939a87a069e6bc47a5e85db0b8cb3b9,
+    type: 3}
+  spawnOffset: 0.7
+  ShootingLocation: {x: 0, y: 0, z: 0}
+  myTimeLine: {fileID: 0}
+  frames:
+    fastAction:
+      Name: pea shooter
+      startup: 1
+      action: 1
+      cooldown: 4
+      damage: 2
+    mediumAction:
+      Name: confident shot
+      startup: 1
+      action: 1
+      cooldown: 6
+      damage: 3
+    slowAction:
+      Name: Death blow
+      startup: 1
+      action: 1
+      cooldown: 8
+      damage: 4
+  OnWarmUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActiveEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 901859911}
+        m_MethodName: SpawnBullet
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnCooldownEvent:
+    m_PersistentCalls:
+      m_Calls: []

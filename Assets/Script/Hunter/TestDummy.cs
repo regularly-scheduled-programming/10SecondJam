@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestDummy : MonoBehaviour,IShootable
+public class TestDummy : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

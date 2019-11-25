@@ -5,4 +5,10 @@ using UnityEngine;
 public interface IShootable
 {
     void shot(float Damage);
+
+    bool isInvunverable();
+    
+
+    
+    
 }

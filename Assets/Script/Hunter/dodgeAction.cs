@@ -3,23 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MovementAciton : MonoBehaviour,ITimelineAction
-
-   
+public class dodgeAction : MonoBehaviour,ITimelineAction
 {
-    [SerializeField]
-    public List<GameObject> Movementpoints = new List<GameObject>();
-    int currentPoint=-1;
-    public bool move=false;
-
-    public float lerplength=1;
-    float currentLerpTime;
-    float timeStarted;
-
-    Vector2 endposition;
-    Vector2 currentPos;
-
-    //ActionVariables
     public TimelineBehavior myTimeLine;
 
     Vector3 originalScale;
@@ -31,68 +16,43 @@ public class MovementAciton : MonoBehaviour,ITimelineAction
     public UnityEvent OnActiveEvent;
     public UnityEvent OnCooldownEvent;
 
+    public playerCharacter PC;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        //NextMovement();
+        PC = GetComponent<playerCharacter>();  
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (move)
-        {
-            currentLerpTime += Time.time-timeStarted;
-            //currentLerpTime += Time.deltaTime;
-            float perc = currentLerpTime / lerplength;
-            transform.position = Vector3.Lerp(currentPos, new Vector2(Movementpoints[currentPoint].GetComponent<Tile>(). XCoord,Movementpoints[currentPoint].GetComponent<Tile>().YCoord), perc);
 
-            if (perc >= 1)
-            {
-                //move = false;
-                currentLerpTime = 0;
-                NextMovement();
-            }
-        }
     }
-    
 
 
 
-    public void NextMovement()
+    public void setInvunerable(bool dodgeing)
     {
-        currentPoint++;
-        currentPos = transform.position;
-        if (currentPoint > Movementpoints.Count-1)
+        if (dodgeing)
         {
-            move = false;
-            currentPoint = -1;
-            clearpaths();
+            PC.invunerable = true;
         }
-
         else
         {
-            timeStarted = Time.time;
-            move = true;
-            //Tell something the movements over
-            
+            PC.invunerable = false;
         }
     }
 
-    public void SetMovementList(){
-       Movementpoints=FindObjectOfType<GridManager>().movementPath;
-       frames.fastAction.action = (int)0.5f*(Movementpoints.Count + 1);
-       //NextMovement();
 
-    }
-   
-   public void clearpaths(){
-        Movementpoints.Clear();
-        FindObjectOfType<GridManager>().movementPath.Clear();
-   }
+
     //ACTION CODE
+
     public frameVars GetFrames(ActionType type)
     {
+        
         switch (type)
         {
             case ActionType.fastAction:
@@ -129,6 +89,8 @@ public class MovementAciton : MonoBehaviour,ITimelineAction
         OnCooldownEvent.Invoke();
     }
 
+
+
     public void AddFastAction()
     {
         myTimeLine.AddToTimeline(this, ActionType.fastAction);
@@ -143,5 +105,4 @@ public class MovementAciton : MonoBehaviour,ITimelineAction
     {
         myTimeLine.AddToTimeline(this, ActionType.slowAction);
     }
-
 }

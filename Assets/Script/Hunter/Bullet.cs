@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
    [SerializeField]
    float speed=20f;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +36,20 @@ public class Bullet : MonoBehaviour
         
         if (collision.gameObject.GetComponent<IShootable>()!=null)
         {
+            IShootable shootObject = collision.gameObject.GetComponent<IShootable>();
+            if (!shootObject.isInvunverable())
+            {
+                collision.gameObject.GetComponent<IShootable>().shot(0);
+                Destroy(gameObject);
+            }
+           
             
-            collision.gameObject.GetComponent<IShootable>().shot(0);
         }
 
-        Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 }
