@@ -23,6 +23,7 @@ public class GridManager : MonoBehaviour
     public int player2Xcoord;
     public int player2Ycoord;
     public bool ShowWalkable = false;
+    public bool ShowShootable = false;
 
     public GameObject[] Grid;
 
@@ -92,8 +93,67 @@ public class GridManager : MonoBehaviour
                         tempY = Grid[i].GetComponent<Tile>().YCoord +1;                       
                         Grid[i].GetComponent<Tile>().neighbors[7] =FindByCoord(tempX,tempY);
                 
-		        }
-                }
+		        } 
+            }
+
+            
+                    // CORNERS//
+
+                        //BOTTOM LEFT//
+                        if(Grid[i].GetComponent<Tile>().XCoord == 0 && Grid[i].GetComponent<Tile>().YCoord == 0)
+                        {
+                            Debug.Log("bottom left");
+                            tempX = Grid[i].GetComponent<Tile>().XCoord + 1;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord;                       
+                            Grid[i].GetComponent<Tile>().neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = Grid[i].GetComponent<Tile>().XCoord;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord + 1;                       
+                            Grid[i].GetComponent<Tile>().neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = Grid[i].GetComponent<Tile>().XCoord + 1;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord + 1;                       
+                            Grid[i].GetComponent<Tile>().neighbors[2] =FindByCoord(tempX,tempY);
+                        }
+                          //BOTTOM RIGHT//
+                        if(Grid[i].GetComponent<Tile>().XCoord == 15 && Grid[i].GetComponent<Tile>().YCoord == 0)
+                        {
+                            tempX = Grid[i].GetComponent<Tile>().XCoord - 1;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord;                       
+                            Grid[i].GetComponent<Tile>().neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = Grid[i].GetComponent<Tile>().XCoord;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord +1;                       
+                            Grid[i].GetComponent<Tile>().neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = Grid[i].GetComponent<Tile>().XCoord -1;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord +1;                       
+                            Grid[i].GetComponent<Tile>().neighbors[2] =FindByCoord(tempX,tempY);
+                        }
+                        
+                          //TOP LEFT//
+                        if(Grid[i].GetComponent<Tile>().XCoord == 0 && Grid[i].GetComponent<Tile>().YCoord == 7)
+                        {
+                            tempX = Grid[i].GetComponent<Tile>().XCoord + 1;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord;                       
+                            Grid[i].GetComponent<Tile>().neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = Grid[i].GetComponent<Tile>().XCoord;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
+                            Grid[i].GetComponent<Tile>().neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = Grid[i].GetComponent<Tile>().XCoord +1;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
+                            Grid[i].GetComponent<Tile>().neighbors[2] =FindByCoord(tempX,tempY);
+                        }
+                        
+                          //BOTTOM RIGHT//
+                        if(Grid[i].GetComponent<Tile>().XCoord == 15 && Grid[i].GetComponent<Tile>().YCoord == 7)
+                        {
+                            tempX = Grid[i].GetComponent<Tile>().XCoord - 1;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord;                       
+                            Grid[i].GetComponent<Tile>().neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = Grid[i].GetComponent<Tile>().XCoord;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
+                            Grid[i].GetComponent<Tile>().neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = Grid[i].GetComponent<Tile>().XCoord -1;
+                            tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
+                            Grid[i].GetComponent<Tile>().neighbors[2] =FindByCoord(tempX,tempY);
+                        }
     }
     }
 
@@ -165,6 +225,7 @@ public class GridManager : MonoBehaviour
             case GridStates.ShowMove:
             if(i == (int)GridState){
                 GridState = GridStates.Default;
+                movementPath.Clear();
                 ResetBoard();
             }
             else{
@@ -177,14 +238,11 @@ public class GridManager : MonoBehaviour
             case GridStates.ShowShoot:
                 if(i == (int)GridState){
                 GridState = GridStates.Default;
+                
                 ResetBoard();
             }
-            else{
-                for(int j = 0; j < Grid.Length;j++)
-                {
-                    
-                    Grid[j].GetComponent<Tile>().isActive = true;
-                }       
+            else{    
+                ShowShootableTiles();
                 GridState = GridStates.ShowShoot;
             }
             break;
@@ -207,6 +265,7 @@ public class GridManager : MonoBehaviour
         {
             movementPath[i].GetComponent<SpriteRenderer>().color = Color.blue;
         }
+        
     }
 
     public void ShowAvailableMovement(int x, int y)
@@ -241,6 +300,23 @@ public class GridManager : MonoBehaviour
     } 
  }
 
+ public void ShowShootableTiles()
+ {
+     if(!ShowShootable)
+     {
+         ShowShootable = true;
+        for(int i = 0; i < Grid.Length; i++)
+        {
+            if( Grid[i].GetComponent<Tile>().TileType != Tile.TileTypes.Cover)
+            {
+                Grid[i].GetComponent<Tile>().GetComponent<SpriteRenderer>().color = Color.green;
+                Grid[i].GetComponent<Tile>().isActive = true;
+            }
+        }
+        
+     }
+ }
+
     public void SelectMovementPath(int x, int y)
     {
         var state=player1.GetComponent<playerCharacter>().currentAction;
@@ -272,11 +348,17 @@ public class GridManager : MonoBehaviour
                 if(Grid[i].GetComponent<Tile>().XCoord == x 
                     && Grid[i].GetComponent<Tile>().YCoord == y && 
                     Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
-                {                                 
-
-                 toShoot= new Vector2(Grid[i].GetComponent<Tile>().XCoord,Grid[i].GetComponent<Tile>().YCoord);
-                 Grid[i].GetComponent<Tile>().GetComponent<SpriteRenderer>().color = Color.blue;
-                }
+                    {                                         
+                        if(Grid[i].GetComponent<Tile>().isActive)
+                        {
+                            ResetBoard();
+                            ShowShootable = false;
+                            
+                            toShoot= new Vector2(Grid[i].GetComponent<Tile>().XCoord,Grid[i].GetComponent<Tile>().YCoord);
+                            Grid[i].GetComponent<Tile>().GetComponent<SpriteRenderer>().color = Color.blue;
+                        }
+                    
+                    }       
             }    
             break;
         

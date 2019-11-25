@@ -63,7 +63,7 @@ public class bulletTargeting : MonoBehaviour,ITimelineAction
     
     public void getShootLocation(){
        ShootingLocation=new Vector3(FindObjectOfType<GridManager>().toShoot.x,FindObjectOfType<GridManager>().toShoot.y,0);
-       //SpawnBullet(ShootingLocation);
+       SpawnBullet();
     }
 
     //Action Code
