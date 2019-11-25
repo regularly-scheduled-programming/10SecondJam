@@ -15,18 +15,18 @@ public class GridManager : MonoBehaviour
     public GridStates GridState;
 
     public GameObject player1;
+
+    public GameObject player2;
     public Tile TileScript;
     public int player1Xcoord;
     public int player1Ycoord;
-
+    public int player2Xcoord;
+    public int player2Ycoord;
     public bool ShowWalkable = false;
 
     public GameObject[] Grid;
 
     public GameObject[,] grid;
-
-    private static int rows = 8;
-	private static int coloumns = 16;
 
     public GameObject[] tempneighbors;
 
@@ -38,6 +38,7 @@ public class GridManager : MonoBehaviour
     void Start()
     {
         player1 =  GameObject.FindGameObjectWithTag("Player");
+        player2 =  GameObject.FindGameObjectWithTag("Player2");
         Invoke ("SetNeighbors",1f);
        
     }
@@ -77,6 +78,18 @@ public class GridManager : MonoBehaviour
                         tempX = Grid[i].GetComponent<Tile>().XCoord;
                         tempY = Grid[i].GetComponent<Tile>().YCoord +1;                       
                         Grid[i].GetComponent<Tile>().neighbors[3] =FindByCoord(tempX,tempY);
+                        tempX = Grid[i].GetComponent<Tile>().XCoord -1;
+                        tempY = Grid[i].GetComponent<Tile>().YCoord +1;                       
+                        Grid[i].GetComponent<Tile>().neighbors[4] =FindByCoord(tempX,tempY);
+                        tempX = Grid[i].GetComponent<Tile>().XCoord -1;
+                        tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
+                        Grid[i].GetComponent<Tile>().neighbors[5] =FindByCoord(tempX,tempY);
+                        tempX = Grid[i].GetComponent<Tile>().XCoord +1;
+                        tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
+                        Grid[i].GetComponent<Tile>().neighbors[6] =FindByCoord(tempX,tempY);
+                        tempX = Grid[i].GetComponent<Tile>().XCoord +1;
+                        tempY = Grid[i].GetComponent<Tile>().YCoord +1;                       
+                        Grid[i].GetComponent<Tile>().neighbors[7] =FindByCoord(tempX,tempY);
                 
 		        }
                 }
@@ -105,11 +118,16 @@ public class GridManager : MonoBehaviour
     {
         player1Xcoord = (int)player1.transform.position.x;
         player1Ycoord = (int)player1.transform.position.y;
+
+        player2Xcoord = (int)player2.transform.position.x;
+        player2Ycoord = (int)player2.transform.position.y;
+
+
     }
 
     void UpdateGrid()
     {
-        UpdatePlayerPositionOnGrid(player1Xcoord, player1Ycoord);
+        UpdatePlayerPositionOnGrid(player2Xcoord, player2Ycoord);
     }
 
     void UpdatePlayerPositionOnGrid(int x, int y)
@@ -145,11 +163,11 @@ public class GridManager : MonoBehaviour
             case GridStates.ShowMove:
             if(i == (int)GridState){
                 GridState = GridStates.Default;
-                ShowWalkable = false;
+               
                 ResetBoard();
             }
             else{
-                ShowAvailableMovement();
+                ShowAvailableMovement(player1Xcoord, player1Ycoord);
                 GridState = GridStates.ShowMove;
             }
             
@@ -167,51 +185,41 @@ public class GridManager : MonoBehaviour
         {
             Grid[i].GetComponent<SpriteRenderer>().color = Color.grey;
         }
+        for(int i= 0; i < movementPath.Count; i++)
+        {
+            movementPath[i].GetComponent<SpriteRenderer>().color = Color.blue;
+        }
     }
 
-    public void ShowAvailableMovement()
+    public void ShowAvailableMovement(int x, int y)
     {
         if(!ShowWalkable)
         {
             ShowWalkable = true;
             for(int i = 0; i < Grid.Length; i++)
             {
-                if(Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.PlayerOccupied)
-                {
+                 if(Grid[i].GetComponent<Tile>().XCoord == x 
+            && Grid[i].GetComponent<Tile>().YCoord == y)
+            {
                   
                   tempneighbors = Grid[i].GetComponent<Tile>().neighbors;
                   for(int j = 0; j < tempneighbors.Length; j++)
                   {     
                       
-                        if(Grid[i].GetComponent<Tile>().neighbors[j].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
+                        if(tempneighbors[j].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
                         {
-                            Grid[i].GetComponent<Tile>().neighbors[j].GetComponent<SpriteRenderer>().color = Color.green;
+                            tempneighbors[j].GetComponent<Tile>().GetComponent<SpriteRenderer>().color = Color.green;
+                            tempneighbors[j].GetComponent<Tile>().isActive = true;
+                        }
+                        else{
 
-                        }    
+                        }
                   }
                    
                 }
             
             }
-        }
-        /* else
-        {
-            ShowWalkable = false;
-            for(int i = 0; i < Grid.Length; i++)
-            {
-                 if(Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
-                {
-                    Grid[i].GetComponent<SpriteRenderer>().color = Color.grey;
-                }
-                else
-                {
-                    if(Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Cover)
-                    {
-                        Grid[i].GetComponent<SpriteRenderer>().color = Color.grey;
-                    }
-                } 
-            }
-        } */
+        } 
     }
 
     public void SelectMovementPath(int x, int y)
@@ -224,10 +232,18 @@ public class GridManager : MonoBehaviour
             {
                 if(Grid[i].GetComponent<Tile>().XCoord == x 
                     && Grid[i].GetComponent<Tile>().YCoord == y && 
-                    Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
+                    Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable 
+                    && GridState == GridStates.ShowMove)
                 {                                 
-                    Grid[i].GetComponent<SpriteRenderer>().color = Color.blue;
-                    movementPath.Add(Grid[i]);
+                 
+                        if(Grid[i].GetComponent<Tile>().isActive)
+                        {
+                            movementPath.Add(Grid[i]);
+                             ShowWalkable = false;
+                            ResetBoard();
+                            ShowAvailableMovement(Grid[i].GetComponent<Tile>().XCoord, Grid[i].GetComponent<Tile>().YCoord);
+                        }
+                    
                 }
             }
             break;
@@ -255,9 +271,7 @@ public class GridManager : MonoBehaviour
                     && Grid[i].GetComponent<Tile>().YCoord == y && 
                     Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
                 {                                 
-                    ResetBoard();
-                    Grid[i].GetComponent<SpriteRenderer>().color = Color.blue;
-                    movementPath.Add(Grid[i]);
+                   
                 }
             }
     }

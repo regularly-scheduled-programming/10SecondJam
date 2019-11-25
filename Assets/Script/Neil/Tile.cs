@@ -22,6 +22,8 @@ public class Tile : MonoBehaviour
     public GameObject[] neighbors;
 
     public GridManager gridManager;
+
+    public bool isActive;
    
 
 
@@ -40,7 +42,7 @@ public class Tile : MonoBehaviour
 
     public void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && isActive)
         {
             gridManager.SelectMovementPath(XCoord, YCoord);
             Debug.Log("here");
