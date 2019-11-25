@@ -163,7 +163,7 @@ public class GridManager : MonoBehaviour
             case GridStates.ShowMove:
             if(i == (int)GridState){
                 GridState = GridStates.Default;
-               
+               //ShowWalkable = false;
                 ResetBoard();
             }
             else{
@@ -181,6 +181,7 @@ public class GridManager : MonoBehaviour
 
     public void ResetBoard()
     {
+        ShowWalkable = false;
         for(int i = 0; i < Grid.Length; i++)
         {
             Grid[i].GetComponent<SpriteRenderer>().color = Color.grey;
