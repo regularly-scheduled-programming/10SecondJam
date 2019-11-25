@@ -18,12 +18,16 @@ public class dodgeAction : MonoBehaviour,ITimelineAction
 
     public playerCharacter PC;
 
-
+    //Testing IFRAMES
+    Color normalColor;
 
     // Start is called before the first frame update
     void Start()
     {
-        PC = GetComponent<playerCharacter>();  
+        PC = GetComponent<playerCharacter>();
+
+        normalColor = GetComponent<SpriteRenderer>().color;
+
     }
 
     // Update is called once per frame
@@ -38,10 +42,13 @@ public class dodgeAction : MonoBehaviour,ITimelineAction
     {
         if (dodgeing)
         {
+            GetComponent<SpriteRenderer>().color = Color.cyan;
             PC.invunerable = true;
+            
         }
         else
         {
+            GetComponent<SpriteRenderer>().color = normalColor;
             PC.invunerable = false;
         }
     }
