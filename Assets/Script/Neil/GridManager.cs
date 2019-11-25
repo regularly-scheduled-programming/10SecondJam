@@ -39,7 +39,7 @@ public class GridManager : MonoBehaviour
     {
         player1 =  GameObject.FindGameObjectWithTag("Player");
         player2 =  GameObject.FindGameObjectWithTag("Player2");
-        Invoke ("SetNeighbors",1f);
+        Invoke ("SetNeighbors",2f);
        
     }
 
@@ -62,6 +62,7 @@ public class GridManager : MonoBehaviour
 			if(Grid[i].GetComponent<Tile>().XCoord >0 && Grid[i].GetComponent<Tile>().XCoord < 15)
             {
                
+               // MIDDLE BOARD //
                 if(Grid[i].GetComponent<Tile>().YCoord >0 && Grid[i].GetComponent<Tile>().YCoord < 7)
                 {
                    
@@ -134,7 +135,7 @@ public class GridManager : MonoBehaviour
     {
         for(int i = 0; i < Grid.Length; i++)
         {
-            //Grid[i].GetComponent<SpriteRenderer>().color = Color.grey;
+          
             if(Grid[i].GetComponent<Tile>().XCoord == x 
             && Grid[i].GetComponent<Tile>().YCoord == y)
             {
@@ -143,12 +144,13 @@ public class GridManager : MonoBehaviour
 
                 Grid[i].GetComponent<SpriteRenderer>().color = Color.red;
             }
-                else{
-                    if( Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.PlayerOccupied)
-                    {
-                        Grid[i].GetComponent<Tile>().TileType =  Tile.TileTypes.Walkable;
+            else
+            {
+                if( Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.PlayerOccupied)
+                {
+                    Grid[i].GetComponent<Tile>().TileType =  Tile.TileTypes.Walkable;
                         
-                    }
+                }
             }
             
         }
@@ -163,7 +165,6 @@ public class GridManager : MonoBehaviour
             case GridStates.ShowMove:
             if(i == (int)GridState){
                 GridState = GridStates.Default;
-               //ShowWalkable = false;
                 ResetBoard();
             }
             else{
@@ -172,9 +173,24 @@ public class GridManager : MonoBehaviour
             }
             
             break;
+
             case GridStates.ShowShoot:
+                if(i == (int)GridState){
+                GridState = GridStates.Default;
+                ResetBoard();
+            }
+            else{
+                for(int j = 0; j < Grid.Length;j++)
+                {
+                    
+                    Grid[j].GetComponent<Tile>().isActive = true;
+                }       
+                GridState = GridStates.ShowShoot;
+            }
             break;
+
             case GridStates.ShowDodge:
+            
             break;
         }
     }
@@ -185,6 +201,7 @@ public class GridManager : MonoBehaviour
         for(int i = 0; i < Grid.Length; i++)
         {
             Grid[i].GetComponent<SpriteRenderer>().color = Color.grey;
+            Grid[i].GetComponent<Tile>().isActive = false;
         }
         for(int i= 0; i < movementPath.Count; i++)
         {
@@ -200,7 +217,7 @@ public class GridManager : MonoBehaviour
             for(int i = 0; i < Grid.Length; i++)
             {
                  if(Grid[i].GetComponent<Tile>().XCoord == x 
-            && Grid[i].GetComponent<Tile>().YCoord == y)
+                    && Grid[i].GetComponent<Tile>().YCoord == y)
             {
                   
                   tempneighbors = Grid[i].GetComponent<Tile>().neighbors;
@@ -212,16 +229,17 @@ public class GridManager : MonoBehaviour
                             tempneighbors[j].GetComponent<Tile>().GetComponent<SpriteRenderer>().color = Color.green;
                             tempneighbors[j].GetComponent<Tile>().isActive = true;
                         }
-                        else{
-
-                        }
                   }
-                   
+                  
+             }
+                if(Grid[i].GetComponent<Tile>().TileType != null)
+                {
+                    
                 }
             
-            }
-        } 
-    }
+        }
+    } 
+ }
 
     public void SelectMovementPath(int x, int y)
     {
@@ -257,9 +275,11 @@ public class GridManager : MonoBehaviour
                 {                                 
 
                  toShoot= new Vector2(Grid[i].GetComponent<Tile>().XCoord,Grid[i].GetComponent<Tile>().YCoord);
+                 Grid[i].GetComponent<Tile>().GetComponent<SpriteRenderer>().color = Color.blue;
                 }
             }    
             break;
+        
             case playerCharacter.actionState.Dodge:
 
             break;
