@@ -34,10 +34,23 @@ public class TurnManager_2_0 : MonoBehaviour
 
     }
 
-    public void ConfirmShoot()
+    public void ConfirmShoot(int attackSpeed)
     {
-        currentPlayer.GetComponent<bulletTargeting>().getShootLocation();
-        currentPlayer.GetComponent<bulletTargeting>().AddFastAction();
+        switch (attackSpeed)
+        {
+            case 0:
+                currentPlayer.GetComponent<bulletTargeting>().getShootLocation(1);
+                currentPlayer.GetComponent<bulletTargeting>().AddFastAction();
+                break;
+            case 1:
+                currentPlayer.GetComponent<bulletTargeting>().getShootLocation(2);
+                currentPlayer.GetComponent<bulletTargeting>().AddMediumAction();
+                break;
+            case 2:
+                currentPlayer.GetComponent<bulletTargeting>().getShootLocation(3);
+                currentPlayer.GetComponent<bulletTargeting>().AddSlowAction();
+                break;
+        }
     }
 
     public void DodgingPhase()
