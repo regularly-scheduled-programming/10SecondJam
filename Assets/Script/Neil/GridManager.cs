@@ -119,15 +119,15 @@ public class GridManager : MonoBehaviour
         player1Xcoord = (int)player1.transform.position.x;
         player1Ycoord = (int)player1.transform.position.y;
 
-        player2Xcoord = (int)player2.transform.position.x;
-        player2Ycoord = (int)player2.transform.position.y;
+      //  player2Xcoord = (int)player2.transform.position.x;
+      //  player2Ycoord = (int)player2.transform.position.y;
 
 
     }
 
     void UpdateGrid()
     {
-        UpdatePlayerPositionOnGrid(player2Xcoord, player2Ycoord);
+        UpdatePlayerPositionOnGrid(player1Xcoord, player1Ycoord);
     }
 
     void UpdatePlayerPositionOnGrid(int x, int y)
