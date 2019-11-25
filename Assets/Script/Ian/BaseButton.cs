@@ -6,12 +6,16 @@ using UnityEngine.UI;
 public class BaseButton: MonoBehaviour
 {
     public bool WasClicked;
+    public bool IsAvailable;
     public Transform SubMenu;
     public GameObject[] Cards;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (this.transform.childCount != 0)
+            {
+            SubMenu = this.transform.GetChild(0).transform;
+        }
     }
 
     // Update is called once per frame
@@ -28,7 +32,6 @@ public class BaseButton: MonoBehaviour
             OpenSubMenu();
             foreach (var Card in Cards)
             {
-                Color CurrentColor = Card.GetComponent<Image>().color;
                 Card.GetComponent<Button>().interactable = false;
             } 
         }
@@ -38,8 +41,12 @@ public class BaseButton: MonoBehaviour
             CloseSubMenu();
             foreach (var Card in Cards)
             {
-                Color CurrentColor = Card.GetComponent<Image>().color;
-                Card.GetComponent<Button>().interactable = true;
+                if (Card.GetComponent<BaseButton>().IsAvailable)
+                {
+                    Card.GetComponent<Button>().interactable = true;
+                    Debug.Log (Card.name + " " + IsAvailable + " has become interactable");
+                }
+                    
             }
         }
     }
