@@ -6,7 +6,6 @@ public class TurnManager_2_0 : MonoBehaviour
 {
     public playerCharacter currentPlayer;
     public GridManager gridManager;
-    public int gridState;
 
     // Start is called before the first frame update
     void Start()
