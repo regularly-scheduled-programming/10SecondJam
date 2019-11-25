@@ -14108,7 +14108,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 16518606}
+      objectReference: {fileID: 513171012}
     - target: {fileID: 4297161264829467619, guid: 8ab5b1b5524528b47b7661cf94d568b5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -14122,7 +14122,7 @@ PrefabInstance:
     - target: {fileID: 4297161264829467619, guid: 8ab5b1b5524528b47b7661cf94d568b5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ChangeGridState
+      value: UpdateGridState
       objectReference: {fileID: 0}
     - target: {fileID: 4297161264829467619, guid: 8ab5b1b5524528b47b7661cf94d568b5,
         type: 3}
@@ -14153,11 +14153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 16518606}
+      objectReference: {fileID: 513171012}
     - target: {fileID: 6352182337215872555, guid: 8ab5b1b5524528b47b7661cf94d568b5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ChangeGridState
+      value: UpdateGridState
       objectReference: {fileID: 0}
     - target: {fileID: 6352182337215872555, guid: 8ab5b1b5524528b47b7661cf94d568b5,
         type: 3}
@@ -14238,11 +14238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 16518606}
+      objectReference: {fileID: 513171012}
     - target: {fileID: 7328192582433521103, guid: 8ab5b1b5524528b47b7661cf94d568b5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ChangeGridState
+      value: UpdateGridState
       objectReference: {fileID: 0}
     - target: {fileID: 7328192582433521103, guid: 8ab5b1b5524528b47b7661cf94d568b5,
         type: 3}
