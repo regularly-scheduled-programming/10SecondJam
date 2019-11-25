@@ -212,7 +212,7 @@ MonoBehaviour:
     fastAction:
       Name: 
       startup: 0
-      action: 0
+      action: 10
       cooldown: 0
       damage: 0
     mediumAction:
@@ -232,7 +232,18 @@ MonoBehaviour:
       m_Calls: []
   OnActiveEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 901859909}
+        m_MethodName: NextMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnCooldownEvent:
     m_PersistentCalls:
       m_Calls: []

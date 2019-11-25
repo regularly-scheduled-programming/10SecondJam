@@ -74,6 +74,9 @@ public class MovementAciton : MonoBehaviour,ITimelineAction
         {
             timeStarted = Time.time;
             move = true;
+            //WILL NEED TO WRITE CODE TO INCREASE LERP LENGTH BASED ON MOVEMENT DISTANCE
+
+            //lerplength=Movementpoints.Count
             //Tell something the movements over
             
         }
@@ -82,6 +85,7 @@ public class MovementAciton : MonoBehaviour,ITimelineAction
     public void SetMovementList(){
        Movementpoints=FindObjectOfType<GridManager>().movementPath;
        frames.fastAction.action = (int)0.5f*(Movementpoints.Count + 1);
+       
        //NextMovement();
 
     }
@@ -131,6 +135,7 @@ public class MovementAciton : MonoBehaviour,ITimelineAction
 
     public void AddFastAction()
     {
+        
         myTimeLine.AddToTimeline(this, ActionType.fastAction);
     }
 

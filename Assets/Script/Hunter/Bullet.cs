@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
    public Vector3 direction;
    [SerializeField]
    float speed=20f;
+   public float damage;
 
 
     // Start is called before the first frame update

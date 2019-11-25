@@ -18,6 +18,15 @@ public class dodgeAction : MonoBehaviour,ITimelineAction
 
     public playerCharacter PC;
 
+    Vector2 StartLocation;
+    Vector2 endLocation;
+    bool move;
+    //float timeStarted;
+    float currentLerpTime;
+    float lerplength;
+    GameObject movementPoint;
+
+
     //Testing IFRAMES
     Color normalColor;
 
@@ -33,7 +42,20 @@ public class dodgeAction : MonoBehaviour,ITimelineAction
     // Update is called once per frame
     void Update()
     {
+        if (move)
+        {
+            currentLerpTime += Time.deltaTime;
+            //currentLerpTime += Time.deltaTime;
+            float perc = currentLerpTime / lerplength;
+            transform.position = Vector3.Lerp(StartLocation, new Vector2(movementPoint.GetComponent<Tile>().XCoord, movementPoint.GetComponent<Tile>().YCoord), perc);
 
+            if (perc >= 1)
+            {
+                move = false;
+                currentLerpTime = 0;
+                 
+            }
+        }
     }
 
 
@@ -51,6 +73,28 @@ public class dodgeAction : MonoBehaviour,ITimelineAction
             GetComponent<SpriteRenderer>().color = normalColor;
             PC.invunerable = false;
         }
+    }
+
+
+    public void dodgeMovement()
+    {
+        if (!move)
+        {
+            move = true;
+            StartLocation = transform.position;
+
+        }
+
+        else
+        {
+            move = false;
+        }
+    }
+
+
+    public void dodgeLocation()
+    {
+        //Grabs dodge location from grid manager
     }
 
 

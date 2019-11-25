@@ -27,6 +27,10 @@ public class bulletTargeting : MonoBehaviour,ITimelineAction
     public UnityEvent OnActiveEvent;
     public UnityEvent OnCooldownEvent;
 
+    public enum actionSpeed { none,slow,medium,fast};
+
+    actionSpeed shootType;
+
 
 
 
@@ -51,6 +55,24 @@ public class bulletTargeting : MonoBehaviour,ITimelineAction
 
         GameObject Bullet= Instantiate(bulletSpawn, transform.position+direcetion*spawnOffset,bulletSpawn.transform.rotation=Quaternion.Euler(0f,0f,rotZ)) ;
         Bullet.GetComponent<Bullet>().direction = direcetion;
+        switch (shootType)
+        {
+            case actionSpeed.fast:
+                Bullet.GetComponent<Bullet>().damage = frames.fastAction.damage;
+                break;
+
+            case actionSpeed.medium:
+                Bullet.GetComponent<Bullet>().damage = frames.mediumAction.damage;
+                break;
+
+            case actionSpeed.slow:
+                Bullet.GetComponent<Bullet>().damage = frames.slowAction.damage;
+                break;
+
+
+        }
+        //Bullet.GetComponent<Bullet>().
+        
     }
 
 
@@ -61,9 +83,11 @@ public class bulletTargeting : MonoBehaviour,ITimelineAction
     }
  
     
-    public void getShootLocation(){
+    public void getShootLocation(int Type){
        ShootingLocation=new Vector3(FindObjectOfType<GridManager>().toShoot.x,FindObjectOfType<GridManager>().toShoot.y,0);
-       SpawnBullet();
+       shootType = (actionSpeed)Type;
+
+       //SpawnBullet();
     }
 
     //Action Code

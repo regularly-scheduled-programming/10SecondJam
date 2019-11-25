@@ -33,4 +33,10 @@ public class playerCharacter : MonoBehaviour,IShootable
     {
         return (invunerable);
     }
+
+    public void setState(int NewAciton)
+    {
+        currentAction=(actionState)NewAciton;
+        //currentAction = NewAciton;
+    }
 }
