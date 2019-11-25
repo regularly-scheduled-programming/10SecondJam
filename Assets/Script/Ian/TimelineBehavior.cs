@@ -12,6 +12,8 @@ public class TimelineBehavior : MonoBehaviour
     public float nextActionWarmUp;
     public float nextActionActivate;
     public float nextActiobCoolDown;
+    public playerCharacter owningPlayer;
+    public TurnManager_2_0 turnManager;
 
     public ActionWidget[] MyActions;
     private int currentActionIndex = 0;
@@ -20,6 +22,7 @@ public class TimelineBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        turnManager = FindObjectOfType<TurnManager_2_0>();
         rectTransform = GetComponent<RectTransform>();
         contentSizeFitter = GetComponent<ContentSizeFitter>();
         contentSizeFitter.enabled = false;
@@ -83,9 +86,9 @@ public class TimelineBehavior : MonoBehaviour
         }
         else
         {
-            //////update current player here//////
             currentXPosition = minXPostion;
             Time.timeScale = 0;
+            turnManager.currentPlayer = owningPlayer;
         }
     }
     public void AddToTimeline(ITimelineAction test, ActionType type)
