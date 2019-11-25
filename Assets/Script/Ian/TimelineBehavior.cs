@@ -83,6 +83,7 @@ public class TimelineBehavior : MonoBehaviour
         }
         else
         {
+            //////update current player here//////
             currentXPosition = minXPostion;
             Time.timeScale = 0;
         }

@@ -45,7 +45,7 @@ public class Tile : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && isActive)
         {
             gridManager.SelectMovementPath(XCoord, YCoord);
-            Debug.Log("here");
+            
         }
     }
 }
