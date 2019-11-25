@@ -11,7 +11,7 @@ public class TimelineBehavior : MonoBehaviour
     public float minXPostion;
     public float nextActionWarmUp;
     public float nextActionActivate;
-    public float nextActiobCoolDown;
+    public float nextActionCoolDown;
     public playerCharacter owningPlayer;
     public TurnManager_2_0 turnManager;
 
@@ -73,12 +73,12 @@ public class TimelineBehavior : MonoBehaviour
             }
             currentXPosition -= scrollSpeed * Time.deltaTime;
 
-            if (currentXPosition < nextActiobCoolDown)
+            if (currentXPosition < nextActionCoolDown)
             {
                 MyActions[currentActionIndex].myAction.OnCooldown();
                 Debug.Log("OnCooldown");
 
-                nextActiobCoolDown = -Mathf.Infinity;
+                nextActionCoolDown = -Mathf.Infinity;
             }
 
             rectTransform.anchoredPosition3D = new Vector3(currentXPosition, rectTransform.anchoredPosition3D.y);
@@ -109,7 +109,7 @@ public class TimelineBehavior : MonoBehaviour
 
             nextActionWarmUp = minXPostion - widget.WarmUpFrames * widget.framemultiplier;
             nextActionActivate = nextActionWarmUp - widget.ActiveFrames * widget.framemultiplier;
-            nextActiobCoolDown = nextActionActivate - widget.CooldownFrames * widget.framemultiplier;
+            nextActionCoolDown = nextActionActivate - widget.CooldownFrames * widget.framemultiplier;
 
             UpdateActionList();
         }

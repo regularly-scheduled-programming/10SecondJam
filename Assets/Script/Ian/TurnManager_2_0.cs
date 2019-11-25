@@ -6,15 +6,23 @@ public class TurnManager_2_0 : MonoBehaviour
 {
     public playerCharacter currentPlayer;
     public GridManager gridManager;
+    public int gridState;
+
     // Start is called before the first frame update
     void Start()
     {
         gridManager = FindObjectOfType<GridManager>();
+        Debug.Log(currentPlayer);
+    }
+
+    public void UpdateGridState(int gridState)
+    {
+        gridManager.ChangeGridState(gridState);
     }
 
     public void ConfirmMove()
     {
-        currentPlayer.GetComponent<MovementAciton>().SetMovementList();
+        currentPlayer.GetComponent<MovementAciton>().AddFastAction();
     }
 
     public void PathingPhase()
@@ -22,7 +30,26 @@ public class TurnManager_2_0 : MonoBehaviour
         gridManager.ShowAvailableMovement((int) currentPlayer.gameObject.transform.position.x, (int) currentPlayer.gameObject.transform.position.y);
     }
 
-    //public void
+    public void TargetingPhase()
+    {
+
+    }
+
+    public void ConfirmShoot()
+    {
+        currentPlayer.GetComponent<bulletTargeting>().getShootLocation();
+        currentPlayer.GetComponent<bulletTargeting>().AddFastAction();
+    }
+
+    public void DodgingPhase()
+    {
+
+    }
+    
+    public void ConfirmDodge()
+    {
+        currentPlayer.GetComponent<dodgeAction>().AddFastAction();
+    }
     // Update is called once per frame
     void Update()
     {
