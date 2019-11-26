@@ -242,10 +242,13 @@ public class GridManager : MonoBehaviour
                 GridState = GridStates.Default;
                 movementPath.Clear();
                 ResetBoard();
+                // not sure if this is the right state for default, hunter?
+                ActivePlayer.setState(0);
             }
             else{
                 ShowAvailableMovement(player1Xcoord, player1Ycoord);
                 GridState = GridStates.ShowMove;
+                ActivePlayer.setState(1);
             }
             
             break;
@@ -255,10 +258,13 @@ public class GridManager : MonoBehaviour
                 GridState = GridStates.Default;
                 ShowShootable = false;
                 ResetBoard();
+                // not sure if this is the right state for default, hunter?
+                ActivePlayer.setState(0);
             }
             else{    
                 ShowShootableTiles();
                 GridState = GridStates.ShowShoot;
+                ActivePlayer.setState(2);
             }
             break;
 
@@ -267,10 +273,12 @@ public class GridManager : MonoBehaviour
                 GridState = GridStates.Default;
                 ShowDodgeable = false;
                 ResetBoard();
+                ActivePlayer.setState(0);
             }
             else{    
                 ShowAvailableDodge(player1Xcoord, player1Ycoord);
                 GridState = GridStates.ShowDodge;
+                ActivePlayer.setState(3);
             }
             break;
         }
@@ -398,7 +406,7 @@ public class GridManager : MonoBehaviour
                         {
                             ResetBoard();
                             ShowShootable = false;
-                            
+                            Debug.Log("GETS HERE");
                             toShoot= new Vector2(Grid[i].GetComponent<Tile>().XCoord,Grid[i].GetComponent<Tile>().YCoord);
                             Grid[i].GetComponent<Tile>().GetComponent<SpriteRenderer>().color = Color.blue;
                         }
@@ -414,7 +422,13 @@ public class GridManager : MonoBehaviour
                         && Grid[i].GetComponent<Tile>().YCoord == y && 
                         Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
                     {                                 
-                        
+                         if(Grid[i].GetComponent<Tile>().isActive)
+                        {
+                            movementPath.Add(Grid[i]);
+                             ShowDodgeable = false;
+                            ResetBoard();
+                           // ShowAvailableMovement(Grid[i].GetComponent<Tile>().XCoord, Grid[i].GetComponent<Tile>().YCoord);
+                        }
                     }
                 }
                 break;
