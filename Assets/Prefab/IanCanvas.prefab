@@ -1498,7 +1498,52 @@ PrefabInstance:
     - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ConfirmShoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4159688286259346033}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: MakeActiveButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2659400166491022265, guid: fd0ed0b2899f95843b070dba166391a9,
         type: 3}
@@ -1782,7 +1827,7 @@ PrefabInstance:
     - target: {fileID: 3888286850337082471, guid: d9d717322809a0d43b9f12f7906ab54d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: CloseSubMenu
+      value: MakeActiveButton
       objectReference: {fileID: 0}
     - target: {fileID: 3888286850337082471, guid: d9d717322809a0d43b9f12f7906ab54d,
         type: 3}
@@ -1943,7 +1988,52 @@ PrefabInstance:
     - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ConfirmShoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4159688286259346033}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: MakeActiveButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2659400166491022265, guid: fd0ed0b2899f95843b070dba166391a9,
         type: 3}
@@ -2310,7 +2400,7 @@ PrefabInstance:
     - target: {fileID: 5203077874956847530, guid: 01d35bbf034da0c4fbaa237ae2f24481,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: CloseSubMenu
+      value: MakeActiveButton
       objectReference: {fileID: 0}
     - target: {fileID: 5203077874956847530, guid: 01d35bbf034da0c4fbaa237ae2f24481,
         type: 3}
@@ -3200,16 +3290,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DodgeCard
       objectReference: {fileID: 0}
-    - target: {fileID: 4437598684021615512, guid: e3fc98fae4292f14f9f60329fa6a16bb,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4437598684021615512, guid: e3fc98fae4292f14f9f60329fa6a16bb,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.7254902
-      objectReference: {fileID: 0}
     - target: {fileID: 4579386145748851205, guid: e3fc98fae4292f14f9f60329fa6a16bb,
         type: 3}
       propertyPath: IsAvailable
@@ -3235,6 +3315,16 @@ PrefabInstance:
       propertyPath: Cards.Array.data[2]
       value: 
       objectReference: {fileID: 823820224344299050}
+    - target: {fileID: 4437598684021615512, guid: e3fc98fae4292f14f9f60329fa6a16bb,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437598684021615512, guid: e3fc98fae4292f14f9f60329fa6a16bb,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7254902
+      objectReference: {fileID: 0}
     - target: {fileID: 4437598684021615511, guid: e3fc98fae4292f14f9f60329fa6a16bb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3570,13 +3660,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 4159688286259346033}
     - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: CloseSubMenu
+      value: MakeActiveButton
       objectReference: {fileID: 0}
     - target: {fileID: 2805933119530734123, guid: fd0ed0b2899f95843b070dba166391a9,
         type: 3}

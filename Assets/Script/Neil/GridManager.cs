@@ -25,6 +25,8 @@ public class GridManager : MonoBehaviour
     public bool ShowWalkable = false;
     public bool ShowShootable = false;
 
+    public bool ShowDodgeable = false;
+
     public GameObject[] Grid;
 
     public GameObject[,] grid;
@@ -35,11 +37,17 @@ public class GridManager : MonoBehaviour
 
     public Vector2 toShoot;
     
+    public GameObject TM;
+    public playerCharacter ActivePlayer;
+    
     // Start is called before the first frame update
     void Start()
     {
-        player1 =  GameObject.FindGameObjectWithTag("Player");
-        player2 =  GameObject.FindGameObjectWithTag("Player2");
+        TM = GameObject.FindGameObjectWithTag("TurnManager");
+        ActivePlayer = TM.GetComponent<TurnManager_2_0>().currentPlayer;
+       // player1 =  GameObject.FindGameObjectWithTag("Player");
+       // player2 =  GameObject.FindGameObjectWithTag("Player2");
+      // ActivePlayer = 
         Invoke ("SetNeighbors",2f);
        
     }
@@ -177,8 +185,8 @@ public class GridManager : MonoBehaviour
     
     void UpdatePlayerPositions()
     {
-        player1Xcoord = (int)player1.transform.position.x;
-        player1Ycoord = (int)player1.transform.position.y;
+        player1Xcoord = (int)ActivePlayer.transform.position.x;
+        player1Ycoord = (int)ActivePlayer.transform.position.y;
 
       //  player2Xcoord = (int)player2.transform.position.x;
       //  player2Ycoord = (int)player2.transform.position.y;
@@ -238,7 +246,7 @@ public class GridManager : MonoBehaviour
             case GridStates.ShowShoot:
                 if(i == (int)GridState){
                 GridState = GridStates.Default;
-                
+                ShowShootable = false;
                 ResetBoard();
             }
             else{    
@@ -248,7 +256,15 @@ public class GridManager : MonoBehaviour
             break;
 
             case GridStates.ShowDodge:
-            
+            if(i == (int)GridState){
+                GridState = GridStates.Default;
+                ShowDodgeable = false;
+                ResetBoard();
+            }
+            else{    
+                ShowAvailableDodge(player1Xcoord, player1Ycoord);
+                GridState = GridStates.ShowDodge;
+            }
             break;
         }
     }
@@ -291,11 +307,6 @@ public class GridManager : MonoBehaviour
                   }
                   
              }
-                if(Grid[i].GetComponent<Tile>().TileType != null)
-                {
-                    
-                }
-            
         }
     } 
  }
@@ -315,6 +326,33 @@ public class GridManager : MonoBehaviour
         }
         
      }
+ }
+
+ public void ShowAvailableDodge(int x, int y)
+    {
+        if(!ShowDodgeable)
+        {
+            ShowDodgeable = true;
+            for(int i = 0; i < Grid.Length; i++)
+            {
+                 if(Grid[i].GetComponent<Tile>().XCoord == x 
+                    && Grid[i].GetComponent<Tile>().YCoord == y)
+            {
+                  
+                  tempneighbors = Grid[i].GetComponent<Tile>().neighbors;
+                  for(int j = 0; j < tempneighbors.Length; j++)
+                  {     
+                      
+                        if(tempneighbors[j].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
+                        {
+                            tempneighbors[j].GetComponent<Tile>().GetComponent<SpriteRenderer>().color = Color.green;
+                            tempneighbors[j].GetComponent<Tile>().isActive = true;
+                        }
+                  }
+                  
+             }
+        }
+    } 
  }
 
     public void SelectMovementPath(int x, int y)
@@ -363,20 +401,20 @@ public class GridManager : MonoBehaviour
             break;
         
             case playerCharacter.actionState.Dodge:
-
-            break;
+                 for(int i = 0; i < Grid.Length; i++)
+                {
+                    if(Grid[i].GetComponent<Tile>().XCoord == x 
+                        && Grid[i].GetComponent<Tile>().YCoord == y && 
+                        Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
+                    {                                 
+                        
+                    }
+                }
+                break;
         }
 
         
-         for(int i = 0; i < Grid.Length; i++)
-            {
-                if(Grid[i].GetComponent<Tile>().XCoord == x 
-                    && Grid[i].GetComponent<Tile>().YCoord == y && 
-                    Grid[i].GetComponent<Tile>().TileType == Tile.TileTypes.Walkable)
-                {                                 
-                   
-                }
-            }
+        
     }
     public void MovePlayer()
     {
