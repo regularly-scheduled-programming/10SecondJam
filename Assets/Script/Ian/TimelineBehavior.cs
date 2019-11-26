@@ -19,6 +19,7 @@ public class TimelineBehavior : MonoBehaviour
     private int currentActionIndex = 0;
     private RectTransform rectTransform;
     private ContentSizeFitter contentSizeFitter;
+    public float CurentTimeScale = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +46,7 @@ public class TimelineBehavior : MonoBehaviour
 
        // nextEventXPositon = 
         Time.timeScale = 1;
-
+        CurentTimeScale = Time.timeScale;
     }
     void FixContentSizeFitter()
     {
@@ -54,7 +55,7 @@ public class TimelineBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MyActions != null)
+        if (MyActions != null && GridManager.isInitiated == true)
         {
             if (currentXPosition > minXPostion)
             {
@@ -89,6 +90,8 @@ public class TimelineBehavior : MonoBehaviour
             {
                 currentXPosition = minXPostion;
                 Time.timeScale = 0;
+                CurentTimeScale = Time.timeScale;
+
                 turnManager.currentPlayer = owningPlayer;
             }
         }

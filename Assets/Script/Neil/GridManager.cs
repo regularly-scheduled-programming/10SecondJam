@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-
+    public static bool isInitiated = false;
     public enum GridStates{
         Default,
         ShowMove,
@@ -48,7 +48,7 @@ public class GridManager : MonoBehaviour
        // player1 =  GameObject.FindGameObjectWithTag("Player");
        // player2 =  GameObject.FindGameObjectWithTag("Player2");
       // ActivePlayer = 
-        Invoke ("SetNeighbors",2f);
+        //Invoke ("SetNeighbors",Time.deltaTime);
        
     }
 
@@ -58,6 +58,10 @@ public class GridManager : MonoBehaviour
         UpdatePlayerPositions();
         UpdateGrid();
         
+        if(isInitiated == false)
+        {
+            SetNeighbors();
+        }
     }
 
     void SetNeighbors()
@@ -176,6 +180,8 @@ public class GridManager : MonoBehaviour
             }
           
         }
+
+        isInitiated = true;
           return null;
     }
 	
