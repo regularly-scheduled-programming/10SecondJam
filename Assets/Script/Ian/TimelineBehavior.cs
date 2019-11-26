@@ -54,41 +54,43 @@ public class TimelineBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(currentXPosition > minXPostion)
+        if (MyActions != null)
         {
-            if(currentXPosition < nextActionWarmUp)
+            if (currentXPosition > minXPostion)
             {
-                MyActions[currentActionIndex].myAction.OnWarmUp();
-                Debug.Log("OnWarmUp");
-                nextActionWarmUp = -Mathf.Infinity;
-            }
+                if (currentXPosition < nextActionWarmUp)
+                {
+                    MyActions[currentActionIndex].myAction.OnWarmUp();
+                    Debug.Log("OnWarmUp");
+                    nextActionWarmUp = -Mathf.Infinity;
+                }
 
-            if ( currentXPosition < nextActionActivate)
+                if (currentXPosition < nextActionActivate)
+                {
+                    MyActions[currentActionIndex].myAction.OnActive();
+                    Debug.Log("OnActive");
+
+                    nextActionActivate = -Mathf.Infinity;
+                }
+                currentXPosition -= scrollSpeed * Time.deltaTime;
+
+                if (currentXPosition < nextActionCoolDown)
+                {
+                    MyActions[currentActionIndex].myAction.OnCooldown();
+                    Debug.Log("OnCooldown");
+
+                    nextActionCoolDown = -Mathf.Infinity;
+                }
+
+                rectTransform.anchoredPosition3D = new Vector3(currentXPosition, rectTransform.anchoredPosition3D.y);
+
+            }
+            else
             {
-                MyActions[currentActionIndex].myAction.OnActive();
-                Debug.Log("OnActive");
-
-                nextActionActivate = -Mathf.Infinity;
+                currentXPosition = minXPostion;
+                Time.timeScale = 0;
+                turnManager.currentPlayer = owningPlayer;
             }
-            currentXPosition -= scrollSpeed * Time.deltaTime;
-
-            if (currentXPosition < nextActionCoolDown)
-            {
-                MyActions[currentActionIndex].myAction.OnCooldown();
-                Debug.Log("OnCooldown");
-
-                nextActionCoolDown = -Mathf.Infinity;
-            }
-
-            rectTransform.anchoredPosition3D = new Vector3(currentXPosition, rectTransform.anchoredPosition3D.y);
-
-        }
-        else
-        {
-            currentXPosition = minXPostion;
-            Time.timeScale = 0;
-            turnManager.currentPlayer = owningPlayer;
         }
     }
     public void AddToTimeline(ITimelineAction test, ActionType type)
