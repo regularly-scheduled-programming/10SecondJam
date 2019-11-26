@@ -72,7 +72,7 @@ public class GridManager : MonoBehaviour
            var tile = Grid[i].GetComponent<Tile>();
 	            int tempX = 0;
 			    int tempY = 0;
-			if(Grid[i].GetComponent<Tile>().XCoord >0 && Grid[i].GetComponent<Tile>().XCoord < 15)
+			if(tile.XCoord >0 && Grid[i].GetComponent<Tile>().XCoord < 15)
             {
                
                // MIDDLE BOARD //
@@ -166,8 +166,33 @@ public class GridManager : MonoBehaviour
                             tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
                             Grid[i].GetComponent<Tile>().neighbors[2] =FindByCoord(tempX,tempY);
                         }
+
+                        //OUTER BOARD SIDES//
+
+                        //LEFT SIDE//
+
+
+                        //TOP SIDE//
+
+
+                        //RIGHT SIDE//
+
+
+                        //BOTTOM SIDE//
+
+
+
+
+
+                        
         }
         isInitiated = true;
+
+    }
+
+
+    void SetDodgeNeighbors()
+    {
 
     }
 
@@ -236,6 +261,13 @@ public class GridManager : MonoBehaviour
         switch((GridStates)i)
         {
             case GridStates.Default:
+            movementPath.Clear();
+            GridState = GridStates.Default;
+             ShowShootable = false;
+             ShowDodgeable = false;
+             ShowWalkable = false;
+             ResetBoard();
+            //ActivePlayer.setState(0);
             break;
             case GridStates.ShowMove:
             if(i == (int)GridState){
@@ -243,7 +275,7 @@ public class GridManager : MonoBehaviour
                 movementPath.Clear();
                 ResetBoard();
                 // not sure if this is the right state for default, hunter?
-                ActivePlayer.setState(0);
+                //ActivePlayer.setState(0);
             }
             else{
                 ShowAvailableMovement(player1Xcoord, player1Ycoord);
@@ -259,7 +291,7 @@ public class GridManager : MonoBehaviour
                 ShowShootable = false;
                 ResetBoard();
                 // not sure if this is the right state for default, hunter?
-                ActivePlayer.setState(0);
+                //ActivePlayer.setState(0);
             }
             else{    
                 ShowShootableTiles();
@@ -273,7 +305,7 @@ public class GridManager : MonoBehaviour
                 GridState = GridStates.Default;
                 ShowDodgeable = false;
                 ResetBoard();
-                ActivePlayer.setState(0);
+                //ActivePlayer.setState(0);
             }
             else{    
                 ShowAvailableDodge(player1Xcoord, player1Ycoord);

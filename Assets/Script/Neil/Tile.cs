@@ -21,6 +21,8 @@ public class Tile : MonoBehaviour
 
     public GameObject[] neighbors;
 
+    public GameObject[] dodgeNeighors;
+
     public GridManager gridManager;
 
     public bool isActive;
