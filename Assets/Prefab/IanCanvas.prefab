@@ -356,7 +356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbdf191008cdd70448691f176970908d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionWidgetPrefab: {fileID: 0}
+  ActionWidgetPrefab: {fileID: 4852920922424648365, guid: 5fe4364d9defe0247b886d4e2d73fea7,
+    type: 3}
   scrollSpeed: 40
   currentXPosition: 0
   minXPostion: 0
@@ -473,11 +474,11 @@ RectTransform:
   m_Father: {fileID: 7328192583262103528}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 95, y: -6.552765}
-  m_SizeDelta: {x: -190, y: -254.38}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -6.55278}
+  m_SizeDelta: {x: 610, y: 14.799988}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7328192581864514512
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -992,11 +993,11 @@ RectTransform:
   m_Father: {fileID: 7328192583262103528}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 95, y: -14}
-  m_SizeDelta: {x: -190, y: -254.37996}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -21.087}
+  m_SizeDelta: {x: 610, y: 14.79999}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7328192583177374227
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1363,7 +1364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbdf191008cdd70448691f176970908d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActionWidgetPrefab: {fileID: 0}
+  ActionWidgetPrefab: {fileID: 4852920922424648365, guid: 5fe4364d9defe0247b886d4e2d73fea7,
+    type: 3}
   scrollSpeed: 40
   currentXPosition: 0
   minXPostion: 0
@@ -3290,6 +3292,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DodgeCard
       objectReference: {fileID: 0}
+    - target: {fileID: 4437598684021615512, guid: e3fc98fae4292f14f9f60329fa6a16bb,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437598684021615512, guid: e3fc98fae4292f14f9f60329fa6a16bb,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7254902
+      objectReference: {fileID: 0}
     - target: {fileID: 4579386145748851205, guid: e3fc98fae4292f14f9f60329fa6a16bb,
         type: 3}
       propertyPath: IsAvailable
@@ -3315,16 +3327,6 @@ PrefabInstance:
       propertyPath: Cards.Array.data[2]
       value: 
       objectReference: {fileID: 823820224344299050}
-    - target: {fileID: 4437598684021615512, guid: e3fc98fae4292f14f9f60329fa6a16bb,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4437598684021615512, guid: e3fc98fae4292f14f9f60329fa6a16bb,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.7254902
-      objectReference: {fileID: 0}
     - target: {fileID: 4437598684021615511, guid: e3fc98fae4292f14f9f60329fa6a16bb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
