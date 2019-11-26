@@ -51,6 +51,8 @@ public class TimelineBehavior : MonoBehaviour
     void FixContentSizeFitter()
     {
         contentSizeFitter.enabled = true;
+        rectTransform.anchoredPosition3D = new Vector3(1, rectTransform.anchoredPosition3D.y);
+
     }
     // Update is called once per frame
     void Update()

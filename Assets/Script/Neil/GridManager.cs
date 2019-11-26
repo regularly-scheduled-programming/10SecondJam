@@ -114,7 +114,7 @@ public class GridManager : MonoBehaviour
                         //BOTTOM LEFT//
                         if(Grid[i].GetComponent<Tile>().XCoord == 0 && Grid[i].GetComponent<Tile>().YCoord == 0)
                         {
-                            Debug.Log("bottom left");
+                           // Debug.Log("bottom left");
                             tempX = Grid[i].GetComponent<Tile>().XCoord + 1;
                             tempY = Grid[i].GetComponent<Tile>().YCoord;                       
                             Grid[i].GetComponent<Tile>().neighbors[0] =FindByCoord(tempX,tempY);
@@ -166,7 +166,9 @@ public class GridManager : MonoBehaviour
                             tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
                             Grid[i].GetComponent<Tile>().neighbors[2] =FindByCoord(tempX,tempY);
                         }
-    }
+        }
+        isInitiated = true;
+
     }
 
     GameObject FindByCoord(int x, int y)
@@ -181,7 +183,6 @@ public class GridManager : MonoBehaviour
           
         }
 
-        isInitiated = true;
           return null;
     }
 	
