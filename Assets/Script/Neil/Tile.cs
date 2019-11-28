@@ -13,6 +13,7 @@ public class Tile : MonoBehaviour
          Walkable,
          Visability,
          Exotic,
+         Wall,
     }
 
     public TileTypes TileType;
@@ -21,7 +22,7 @@ public class Tile : MonoBehaviour
 
     public GameObject[] neighbors;
 
-    public GameObject[] dodgeNeighors;
+    public GameObject[] dodgeNeighbors;
 
     public GridManager gridManager;
 

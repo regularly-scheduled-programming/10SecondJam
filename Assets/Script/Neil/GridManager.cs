@@ -5,31 +5,24 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     public static bool isInitiated = false;
-    public enum GridStates{
+    private enum GridStates{
         Default,
         ShowMove,
         ShowShoot,
         ShowDodge
     }
 
-    public GridStates GridState;
+    private GridStates GridState;
 
-    public GameObject player1;
+    private Tile TileScript;
+    private int player1Xcoord;
+    private int player1Ycoord;
+    private bool ShowWalkable = false;
+    private bool ShowShootable = false;
 
-    public GameObject player2;
-    public Tile TileScript;
-    public int player1Xcoord;
-    public int player1Ycoord;
-    public int player2Xcoord;
-    public int player2Ycoord;
-    public bool ShowWalkable = false;
-    public bool ShowShootable = false;
-
-    public bool ShowDodgeable = false;
+    private bool ShowDodgeable = false;
 
     public GameObject[] Grid;
-
-    public GameObject[,] grid;
 
     public GameObject[] tempneighbors;
 
@@ -45,11 +38,7 @@ public class GridManager : MonoBehaviour
     {
         TM = GameObject.FindGameObjectWithTag("TurnManager");
         ActivePlayer = TM.GetComponent<TurnManager_2_0>().currentPlayer;
-       // player1 =  GameObject.FindGameObjectWithTag("Player");
-       // player2 =  GameObject.FindGameObjectWithTag("Player2");
-      // ActivePlayer = 
-        //Invoke ("SetNeighbors",Time.deltaTime);
-       
+      
     }
 
     // Update is called once per frame
@@ -61,6 +50,7 @@ public class GridManager : MonoBehaviour
         if(isInitiated == false)
         {
             SetNeighbors();
+            SetDodgeNeighbors();
         }
     }
 
@@ -72,38 +62,39 @@ public class GridManager : MonoBehaviour
            var tile = Grid[i].GetComponent<Tile>();
 	            int tempX = 0;
 			    int tempY = 0;
-			if(tile.XCoord >0 && Grid[i].GetComponent<Tile>().XCoord < 15)
+			if(tile.XCoord >0 && tile.XCoord < 15)
             {
                
                // MIDDLE BOARD //
-                if(Grid[i].GetComponent<Tile>().YCoord >0 && Grid[i].GetComponent<Tile>().YCoord < 7)
+                if(tile.YCoord >0 && tile.YCoord < 7)
                 {
+                        //initialiaze array for 8 neighbors
+                        tile.neighbors = new GameObject[8];
                    
-                   
-                        tempX = Grid[i].GetComponent<Tile>().XCoord -1;
-                        tempY = Grid[i].GetComponent<Tile>().YCoord;                       
-                        Grid[i].GetComponent<Tile>().neighbors[0] =FindByCoord(tempX,tempY);
-                        tempX = Grid[i].GetComponent<Tile>().XCoord +1;
-                        tempY = Grid[i].GetComponent<Tile>().YCoord;                       
-                        Grid[i].GetComponent<Tile>().neighbors[1] =FindByCoord(tempX,tempY);
-                        tempX = Grid[i].GetComponent<Tile>().XCoord ;
-                        tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
-                        Grid[i].GetComponent<Tile>().neighbors[2] =FindByCoord(tempX,tempY);
-                        tempX = Grid[i].GetComponent<Tile>().XCoord;
-                        tempY = Grid[i].GetComponent<Tile>().YCoord +1;                       
-                        Grid[i].GetComponent<Tile>().neighbors[3] =FindByCoord(tempX,tempY);
-                        tempX = Grid[i].GetComponent<Tile>().XCoord -1;
-                        tempY = Grid[i].GetComponent<Tile>().YCoord +1;                       
-                        Grid[i].GetComponent<Tile>().neighbors[4] =FindByCoord(tempX,tempY);
-                        tempX = Grid[i].GetComponent<Tile>().XCoord -1;
-                        tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
-                        Grid[i].GetComponent<Tile>().neighbors[5] =FindByCoord(tempX,tempY);
-                        tempX = Grid[i].GetComponent<Tile>().XCoord +1;
-                        tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
-                        Grid[i].GetComponent<Tile>().neighbors[6] =FindByCoord(tempX,tempY);
-                        tempX = Grid[i].GetComponent<Tile>().XCoord +1;
-                        tempY = Grid[i].GetComponent<Tile>().YCoord +1;                       
-                        Grid[i].GetComponent<Tile>().neighbors[7] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord -1;
+                        tempY = tile.YCoord;                       
+                        tile.neighbors[0] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord +1;
+                        tempY = tile.YCoord;                       
+                        tile.neighbors[1] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord ;
+                        tempY = tile.YCoord -1;                       
+                        tile.neighbors[2] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord;
+                        tempY = tile.YCoord +1;                       
+                        tile.neighbors[3] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord -1;
+                        tempY = tile.YCoord +1;                       
+                        tile.neighbors[4] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord -1;
+                        tempY = tile.YCoord -1;                       
+                        tile.neighbors[5] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord +1;
+                        tempY = tile.YCoord -1;                       
+                        tile.neighbors[6] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord +1;
+                        tempY = tile.YCoord +1;                       
+                        tile.neighbors[7] =FindByCoord(tempX,tempY);
                 
 		        } 
             }
@@ -111,80 +102,169 @@ public class GridManager : MonoBehaviour
             
                     // CORNERS//
 
-                        //BOTTOM LEFT//
-                        if(Grid[i].GetComponent<Tile>().XCoord == 0 && Grid[i].GetComponent<Tile>().YCoord == 0)
+                        //BOTTOM LEFT CORNER//
+                        if(tile.XCoord == 0 && tile.YCoord == 0)
                         {
-                           // Debug.Log("bottom left");
-                            tempX = Grid[i].GetComponent<Tile>().XCoord + 1;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord;                       
-                            Grid[i].GetComponent<Tile>().neighbors[0] =FindByCoord(tempX,tempY);
-                            tempX = Grid[i].GetComponent<Tile>().XCoord;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord + 1;                       
-                            Grid[i].GetComponent<Tile>().neighbors[1] =FindByCoord(tempX,tempY);
-                            tempX = Grid[i].GetComponent<Tile>().XCoord + 1;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord + 1;                       
-                            Grid[i].GetComponent<Tile>().neighbors[2] =FindByCoord(tempX,tempY);
+                            // initialize array for 3 neighbors
+                            tile.neighbors = new GameObject[3];
+
+                            tempX = tile.XCoord + 1;
+                            tempY = tile.YCoord;                       
+                            tile.neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord + 1;                       
+                            tile.neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord + 1;
+                            tempY = tile.YCoord + 1;                       
+                            tile.neighbors[2] =FindByCoord(tempX,tempY);
                         }
-                          //BOTTOM RIGHT//
-                        if(Grid[i].GetComponent<Tile>().XCoord == 15 && Grid[i].GetComponent<Tile>().YCoord == 0)
+                          //BOTTOM RIGHT CORNER//
+                        if(tile.XCoord == 15 && tile.YCoord == 0)
                         {
-                            tempX = Grid[i].GetComponent<Tile>().XCoord - 1;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord;                       
-                            Grid[i].GetComponent<Tile>().neighbors[0] =FindByCoord(tempX,tempY);
-                            tempX = Grid[i].GetComponent<Tile>().XCoord;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord +1;                       
-                            Grid[i].GetComponent<Tile>().neighbors[1] =FindByCoord(tempX,tempY);
-                            tempX = Grid[i].GetComponent<Tile>().XCoord -1;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord +1;                       
-                            Grid[i].GetComponent<Tile>().neighbors[2] =FindByCoord(tempX,tempY);
-                        }
-                        
-                          //TOP LEFT//
-                        if(Grid[i].GetComponent<Tile>().XCoord == 0 && Grid[i].GetComponent<Tile>().YCoord == 7)
-                        {
-                            tempX = Grid[i].GetComponent<Tile>().XCoord + 1;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord;                       
-                            Grid[i].GetComponent<Tile>().neighbors[0] =FindByCoord(tempX,tempY);
-                            tempX = Grid[i].GetComponent<Tile>().XCoord;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
-                            Grid[i].GetComponent<Tile>().neighbors[1] =FindByCoord(tempX,tempY);
-                            tempX = Grid[i].GetComponent<Tile>().XCoord +1;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
-                            Grid[i].GetComponent<Tile>().neighbors[2] =FindByCoord(tempX,tempY);
+                            // initialize array for 3 neighbors
+                            tile.neighbors = new GameObject[3];
+
+                            tempX = tile.XCoord - 1;
+                            tempY = tile.YCoord;                       
+                            tile.neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord +1;                       
+                            tile.neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -1;
+                            tempY = tile.YCoord +1;                       
+                            tile.neighbors[2] =FindByCoord(tempX,tempY);
                         }
                         
-                          //BOTTOM RIGHT//
-                        if(Grid[i].GetComponent<Tile>().XCoord == 15 && Grid[i].GetComponent<Tile>().YCoord == 7)
+                          //TOP LEFT CORNER//
+                        if(tile.XCoord == 0 && tile.YCoord == 7)
                         {
-                            tempX = Grid[i].GetComponent<Tile>().XCoord - 1;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord;                       
-                            Grid[i].GetComponent<Tile>().neighbors[0] =FindByCoord(tempX,tempY);
-                            tempX = Grid[i].GetComponent<Tile>().XCoord;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
-                            Grid[i].GetComponent<Tile>().neighbors[1] =FindByCoord(tempX,tempY);
-                            tempX = Grid[i].GetComponent<Tile>().XCoord -1;
-                            tempY = Grid[i].GetComponent<Tile>().YCoord -1;                       
-                            Grid[i].GetComponent<Tile>().neighbors[2] =FindByCoord(tempX,tempY);
+                            // initialize array for 3 neighbors
+                            tile.neighbors = new GameObject[3];
+                            
+                            tempX = tile.XCoord + 1;
+                            tempY = tile.YCoord;                       
+                            tile.neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord -1;                       
+                            tile.neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +1;
+                            tempY = tile.YCoord -1;                       
+                            tile.neighbors[2] =FindByCoord(tempX,tempY);
+                        }
+                        
+                          //BOTTOM RIGHT CORNER//
+                        if(tile.XCoord == 15 && tile.YCoord == 7)
+                        {
+                            // initialize array for 3 neighbors
+                            tile.neighbors = new GameObject[3];
+                            
+                            tempX = tile.XCoord - 1;
+                            tempY = tile.YCoord;                       
+                            tile.neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord -1;                       
+                            tile.neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -1;
+                            tempY = tile.YCoord -1;                       
+                            tile.neighbors[2] =FindByCoord(tempX,tempY);
                         }
 
                         //OUTER BOARD SIDES//
 
                         //LEFT SIDE//
-
+                         
+                        if(tile.XCoord == 0 && tile.YCoord > 0 && tile.YCoord <7)
+                        {
+                            // initialize array for 5 neighbors
+                            tile.neighbors = new GameObject[5];
+                            
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord + 1;                      
+                            tile.neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord -1;                       
+                            tile.neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +1;
+                            tempY = tile.YCoord ;                       
+                            tile.neighbors[2] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +1;
+                            tempY = tile.YCoord -1;                       
+                            tile.neighbors[3] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +1;
+                            tempY = tile.YCoord +1;                       
+                            tile.neighbors[4] =FindByCoord(tempX,tempY);
+                        }
 
                         //TOP SIDE//
+                        if(tile.XCoord > 0 && tile.XCoord < 15 && tile.YCoord == 7)
+                        {
+                            // initialize array for 5 neighbors
+                            tile.neighbors = new GameObject[5];
+                            
+                            tempX = tile.XCoord + 1;
+                            tempY = tile.YCoord;                      
+                            tile.neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord - 1;
+                            tempY = tile.YCoord ;                       
+                            tile.neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord ;
+                            tempY = tile.YCoord -1;                       
+                            tile.neighbors[2] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +1;
+                            tempY = tile.YCoord -1;                       
+                            tile.neighbors[3] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -1;
+                            tempY = tile.YCoord -1;                       
+                            tile.neighbors[4] =FindByCoord(tempX,tempY);
+                        }
 
 
                         //RIGHT SIDE//
-
+                         if(tile.XCoord == 15 && tile.YCoord > 0 && tile.YCoord < 7)
+                        {
+                            // initialize array for 5 neighbors
+                            tile.neighbors = new GameObject[5];
+                            
+                            tempX = tile.XCoord ;
+                            tempY = tile.YCoord + 1;                      
+                            tile.neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord ;
+                            tempY = tile.YCoord -1;                       
+                            tile.neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -1;
+                            tempY = tile.YCoord ;                       
+                            tile.neighbors[2] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -1;
+                            tempY = tile.YCoord +1;                       
+                            tile.neighbors[3] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -1;
+                            tempY = tile.YCoord -1;                       
+                            tile.neighbors[4] =FindByCoord(tempX,tempY);
+                        }
 
                         //BOTTOM SIDE//
-
-
-
-
-
-                        
+                         if(tile.XCoord > 0 && tile.XCoord < 15 && tile.YCoord == 0)
+                        {
+                            // initialize array for 5 neighbors
+                            tile.neighbors = new GameObject[5];
+                            
+                            tempX = tile.XCoord + 1;
+                            tempY = tile.YCoord;                      
+                            tile.neighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord - 1;
+                            tempY = tile.YCoord ;                       
+                            tile.neighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord ;
+                            tempY = tile.YCoord +1;                       
+                            tile.neighbors[2] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +1;
+                            tempY = tile.YCoord +1;                       
+                            tile.neighbors[3] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -1;
+                            tempY = tile.YCoord +1;                       
+                            tile.neighbors[4] =FindByCoord(tempX,tempY);
+                        }
+        
         }
         isInitiated = true;
 
@@ -193,7 +273,220 @@ public class GridManager : MonoBehaviour
 
     void SetDodgeNeighbors()
     {
+        for (int i = 0; i < Grid.Length; i++) 
+		{
+           var tile = Grid[i].GetComponent<Tile>();
+	            int tempX = 0;
+			    int tempY = 0;
+			if(tile.XCoord >1 && tile.XCoord < 14)
+            {
+               
+               // MIDDLE BOARD //
+                if(tile.YCoord >1 && tile.YCoord < 6)
+                {
+                        //initialiaze array for 8 neighbors
+                        tile.dodgeNeighbors = new GameObject[8];
+                   
+                        tempX = tile.XCoord -2;
+                        tempY = tile.YCoord;                       
+                        tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord +2;
+                        tempY = tile.YCoord;                       
+                        tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord ;
+                        tempY = tile.YCoord -2;                       
+                        tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord;
+                        tempY = tile.YCoord +2;                       
+                        tile.dodgeNeighbors[3] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord -2;
+                        tempY = tile.YCoord +2;                       
+                        tile.dodgeNeighbors[4] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord -2;
+                        tempY = tile.YCoord -2;                       
+                        tile.dodgeNeighbors[5] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord +2;
+                        tempY = tile.YCoord -2;                       
+                        tile.dodgeNeighbors[6] =FindByCoord(tempX,tempY);
+                        tempX = tile.XCoord +2;
+                        tempY = tile.YCoord +2;                       
+                        tile.dodgeNeighbors[7] =FindByCoord(tempX,tempY);
+                
+		        } 
+            }
 
+            
+                    // CORNERS//
+
+                        //BOTTOM LEFT CORNER//
+                        if((tile.XCoord == 0 && tile.YCoord == 0) ||(tile.XCoord == 1 && tile.YCoord == 1))
+                        {
+                            // initialize array for 3 neighbors
+                            tile.dodgeNeighbors = new GameObject[3];
+
+                            tempX = tile.XCoord + 2;
+                            tempY = tile.YCoord;                       
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord + 2;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord + 2;
+                            tempY = tile.YCoord + 2;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                        }
+                          //BOTTOM RIGHT CORNER//
+                        if((tile.XCoord == 15 && tile.YCoord == 0)||(tile.XCoord == 14 && tile.YCoord == 1))
+                        {
+                            // initialize array for 3 neighbors
+                            tile.dodgeNeighbors = new GameObject[3];
+
+                            tempX = tile.XCoord - 2;
+                            tempY = tile.YCoord;                       
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord +2;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -2;
+                            tempY = tile.YCoord +2;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                        }
+                        
+                          //TOP LEFT CORNER//
+                        if((tile.XCoord == 0 && tile.YCoord == 7)|| (tile.XCoord == 1 && tile.YCoord == 6))
+                        {
+                            // initialize array for 3 neighbors
+                            tile.dodgeNeighbors = new GameObject[3];
+                            
+                            tempX = tile.XCoord + 2;
+                            tempY = tile.YCoord;                       
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +2;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                        }
+                        
+                          //TOP RIGHT CORNER//
+                        if((tile.XCoord == 15 && tile.YCoord == 7)||(tile.XCoord == 14 && tile.YCoord == 6))
+                        {
+                            // initialize array for 3 neighbors
+                            tile.dodgeNeighbors = new GameObject[3];
+                            
+                            tempX = tile.XCoord - 2;
+                            tempY = tile.YCoord;                       
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -2;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                        }
+
+                        //OUTER BOARD SIDES//
+
+                        //LEFT SIDE//
+                         
+                        if((tile.XCoord == 0 && tile.YCoord > 0 && tile.YCoord <7)
+                        ||(tile.XCoord == 1 && tile.YCoord > 0 && tile.YCoord <7))
+                        {
+                            // initialize array for 5 neighbors
+                            tile.dodgeNeighbors = new GameObject[5];
+                            
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord + 2;                      
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +2;
+                            tempY = tile.YCoord ;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +2;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[3] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +2;
+                            tempY = tile.YCoord +2;                       
+                            tile.dodgeNeighbors[4] =FindByCoord(tempX,tempY);
+                        }
+
+                        //TOP SIDE//
+                        if((tile.XCoord > 0 && tile.XCoord < 15 && tile.YCoord == 7)||
+                        (tile.XCoord > 0 && tile.XCoord < 15 && tile.YCoord == 6))
+                        {
+                            // initialize array for 5 neighbors
+                            tile.dodgeNeighbors = new GameObject[5];
+                            
+                            tempX = tile.XCoord + 2;
+                            tempY = tile.YCoord;                      
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord - 2;
+                            tempY = tile.YCoord ;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord ;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +2;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[3] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -2;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[4] =FindByCoord(tempX,tempY);
+                        }
+
+
+                        //RIGHT SIDE//
+                         if((tile.XCoord == 15 && tile.YCoord > 0 && tile.YCoord < 7)
+                         ||(tile.XCoord == 14 && tile.YCoord > 0 && tile.YCoord < 7))
+                        {
+                            // initialize array for 5 neighbors
+                            tile.dodgeNeighbors = new GameObject[5];
+                            
+                            tempX = tile.XCoord ;
+                            tempY = tile.YCoord + 2;                      
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord ;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -2;
+                            tempY = tile.YCoord ;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -2;
+                            tempY = tile.YCoord +2;                       
+                            tile.dodgeNeighbors[3] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -2;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[4] =FindByCoord(tempX,tempY);
+                        }
+
+                        //BOTTOM SIDE//
+                         if((tile.XCoord > 0 && tile.XCoord < 15 && tile.YCoord == 0)
+                         ||(tile.XCoord > 0 && tile.XCoord < 15 && tile.YCoord == 1))
+                        {
+                            // initialize array for 5 neighbors
+                            tile.dodgeNeighbors = new GameObject[5];
+                            
+                            tempX = tile.XCoord + 2;
+                            tempY = tile.YCoord;                      
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord - 2;
+                            tempY = tile.YCoord ;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord ;
+                            tempY = tile.YCoord +2;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +2;
+                            tempY = tile.YCoord +2;                       
+                            tile.dodgeNeighbors[3] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -2;
+                            tempY = tile.YCoord +2;                       
+                            tile.dodgeNeighbors[4] =FindByCoord(tempX,tempY);
+                        }
+        
+        }
+       
     }
 
     GameObject FindByCoord(int x, int y)
@@ -219,10 +512,6 @@ public class GridManager : MonoBehaviour
     {
         player1Xcoord = (int)ActivePlayer.transform.position.x;
         player1Ycoord = (int)ActivePlayer.transform.position.y;
-
-      //  player2Xcoord = (int)player2.transform.position.x;
-      //  player2Ycoord = (int)player2.transform.position.y;
-
 
     }
 
@@ -261,7 +550,7 @@ public class GridManager : MonoBehaviour
         switch((GridStates)i)
         {
             case GridStates.Default:
-            movementPath.Clear();
+            //movementPath.Clear();
             GridState = GridStates.Default;
              ShowShootable = false;
              ShowDodgeable = false;
@@ -272,12 +561,13 @@ public class GridManager : MonoBehaviour
             case GridStates.ShowMove:
             if(i == (int)GridState){
                 GridState = GridStates.Default;
-                movementPath.Clear();
+                //movementPath.Clear();
                 ResetBoard();
                 // not sure if this is the right state for default, hunter?
                 //ActivePlayer.setState(0);
             }
             else{
+                 movementPath.Clear();
                 ShowAvailableMovement(player1Xcoord, player1Ycoord);
                 GridState = GridStates.ShowMove;
                 ActivePlayer.setState(1);
@@ -386,7 +676,7 @@ public class GridManager : MonoBehaviour
                     && Grid[i].GetComponent<Tile>().YCoord == y)
             {
                   
-                  tempneighbors = Grid[i].GetComponent<Tile>().neighbors;
+                  tempneighbors = Grid[i].GetComponent<Tile>().dodgeNeighbors;
                   for(int j = 0; j < tempneighbors.Length; j++)
                   {     
                       
@@ -404,7 +694,7 @@ public class GridManager : MonoBehaviour
 
     public void SelectMovementPath(int x, int y)
     {
-        var state=player1.GetComponent<playerCharacter>().currentAction;
+        var state=ActivePlayer.GetComponent<playerCharacter>().currentAction;
         switch (state){
 
             case playerCharacter.actionState.Move:
@@ -469,8 +759,5 @@ public class GridManager : MonoBehaviour
         
         
     }
-    public void MovePlayer()
-    {
-
-    }
+    
 }
