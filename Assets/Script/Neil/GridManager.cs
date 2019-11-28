@@ -316,74 +316,7 @@ public class GridManager : MonoBehaviour
             }
 
             
-                    // CORNERS//
-
-                        //BOTTOM LEFT CORNER//
-                        if((tile.XCoord == 0 && tile.YCoord == 0) ||(tile.XCoord == 1 && tile.YCoord == 1))
-                        {
-                            // initialize array for 3 neighbors
-                            tile.dodgeNeighbors = new GameObject[3];
-
-                            tempX = tile.XCoord + 2;
-                            tempY = tile.YCoord;                       
-                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
-                            tempX = tile.XCoord;
-                            tempY = tile.YCoord + 2;                       
-                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
-                            tempX = tile.XCoord + 2;
-                            tempY = tile.YCoord + 2;                       
-                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
-                        }
-                          //BOTTOM RIGHT CORNER//
-                        if((tile.XCoord == 15 && tile.YCoord == 0)||(tile.XCoord == 14 && tile.YCoord == 1))
-                        {
-                            // initialize array for 3 neighbors
-                            tile.dodgeNeighbors = new GameObject[3];
-
-                            tempX = tile.XCoord - 2;
-                            tempY = tile.YCoord;                       
-                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
-                            tempX = tile.XCoord;
-                            tempY = tile.YCoord +2;                       
-                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
-                            tempX = tile.XCoord -2;
-                            tempY = tile.YCoord +2;                       
-                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
-                        }
-                        
-                          //TOP LEFT CORNER//
-                        if((tile.XCoord == 0 && tile.YCoord == 7)|| (tile.XCoord == 1 && tile.YCoord == 6))
-                        {
-                            // initialize array for 3 neighbors
-                            tile.dodgeNeighbors = new GameObject[3];
-                            
-                            tempX = tile.XCoord + 2;
-                            tempY = tile.YCoord;                       
-                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
-                            tempX = tile.XCoord;
-                            tempY = tile.YCoord -2;                       
-                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
-                            tempX = tile.XCoord +2;
-                            tempY = tile.YCoord -2;                       
-                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
-                        }
-                        
-                          //TOP RIGHT CORNER//
-                        if((tile.XCoord == 15 && tile.YCoord == 7)||(tile.XCoord == 14 && tile.YCoord == 6))
-                        {
-                            // initialize array for 3 neighbors
-                            tile.dodgeNeighbors = new GameObject[3];
-                            
-                            tempX = tile.XCoord - 2;
-                            tempY = tile.YCoord;                       
-                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
-                            tempX = tile.XCoord;
-                            tempY = tile.YCoord -2;                       
-                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
-                            tempX = tile.XCoord -2;
-                            tempY = tile.YCoord -2;                       
-                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
-                        }
+                   
 
                         //OUTER BOARD SIDES//
 
@@ -438,12 +371,12 @@ public class GridManager : MonoBehaviour
 
 
                         //RIGHT SIDE//
-                         if((tile.XCoord == 15 && tile.YCoord > 0 && tile.YCoord < 7)
-                         ||(tile.XCoord == 14 && tile.YCoord > 0 && tile.YCoord < 7))
+                         if((tile.XCoord == 15 && tile.YCoord > 0 && tile.YCoord < 6)
+                         ||(tile.XCoord == 14 && tile.YCoord > 0 && tile.YCoord < 6))
                         {
                             // initialize array for 5 neighbors
                             tile.dodgeNeighbors = new GameObject[5];
-                            
+
                             tempX = tile.XCoord ;
                             tempY = tile.YCoord + 2;                      
                             tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
@@ -459,6 +392,7 @@ public class GridManager : MonoBehaviour
                             tempX = tile.XCoord -2;
                             tempY = tile.YCoord -2;                       
                             tile.dodgeNeighbors[4] =FindByCoord(tempX,tempY);
+                             
                         }
 
                         //BOTTOM SIDE//
@@ -483,6 +417,80 @@ public class GridManager : MonoBehaviour
                             tempX = tile.XCoord -2;
                             tempY = tile.YCoord +2;                       
                             tile.dodgeNeighbors[4] =FindByCoord(tempX,tempY);
+                        }
+                        
+
+                         // CORNERS//
+
+                        //BOTTOM LEFT CORNER//
+                        if((tile.XCoord == 0 && tile.YCoord == 0) 
+                        ||(tile.XCoord == 1 && tile.YCoord == 1))
+                        {
+                            // initialize array for 3 neighbors
+                            tile.dodgeNeighbors = new GameObject[3];
+
+                            tempX = tile.XCoord + 2;
+                            tempY = tile.YCoord;                       
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord + 2;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord + 2;
+                            tempY = tile.YCoord + 2;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                        }
+                          //BOTTOM RIGHT CORNER//
+                        if((tile.XCoord == 15 && tile.YCoord == 0)
+                        ||(tile.XCoord == 14 && tile.YCoord == 1))
+                        {
+                            // initialize array for 3 neighbors
+                            tile.dodgeNeighbors = new GameObject[3];
+
+                            tempX = tile.XCoord - 2;
+                            tempY = tile.YCoord;                       
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord +2;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -2;
+                            tempY = tile.YCoord +2;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                        }
+                        
+                          //TOP LEFT CORNER//
+                        if((tile.XCoord == 0 && tile.YCoord == 7)
+                        || (tile.XCoord == 1 && tile.YCoord == 6))
+                        {
+                            // initialize array for 3 neighbors
+                            tile.dodgeNeighbors = new GameObject[3];
+                            
+                            tempX = tile.XCoord + 2;
+                            tempY = tile.YCoord;                       
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord +2;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
+                        }
+                        
+                          //TOP RIGHT CORNER//
+                        if((tile.XCoord == 15 && tile.YCoord == 7)
+                        ||(tile.XCoord == 14 && tile.YCoord == 6))
+                        {
+                            // initialize array for 3 neighbors
+                            tile.dodgeNeighbors = new GameObject[3];
+                            
+                            tempX = tile.XCoord - 2;
+                            tempY = tile.YCoord;                       
+                            tile.dodgeNeighbors[0] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[1] =FindByCoord(tempX,tempY);
+                            tempX = tile.XCoord -2;
+                            tempY = tile.YCoord -2;                       
+                            tile.dodgeNeighbors[2] =FindByCoord(tempX,tempY);
                         }
         
         }
